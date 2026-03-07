@@ -1,0 +1,8 @@
+{
+  "name": "expert-agents",
+  "description": "41 specialized domain expert subagents covering TypeScript, React, databases, DevOps, testing, and more - with intelligent cross-delegation",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

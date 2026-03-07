@@ -1,0 +1,8 @@
+{
+  "name": "architecture-toolkit",
+  "description": "Meta-tools for creating commands, subagents, generating project toolkits, and deep research",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}
