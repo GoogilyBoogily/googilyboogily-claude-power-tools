@@ -1,0 +1,27 @@
+{
+  "name": "googilyboogily-claude-power-tools",
+  "description": "Developer commands and expert subagents for Claude Code",
+  "owner": {
+    "name": "GoogilyBoogily"
+  },
+  "plugins": [
+    {
+      "name": "dev-essentials",
+      "description": "Daily developer commands for git workflows, checkpoints, code quality, and configuration",
+      "version": "1.0.0",
+      "source": "./plugins/dev-essentials"
+    },
+    {
+      "name": "architecture-toolkit",
+      "description": "Meta-tools for creating commands, subagents, generating project toolkits, and deep research",
+      "version": "1.0.0",
+      "source": "./plugins/architecture-toolkit"
+    },
+    {
+      "name": "expert-agents",
+      "description": "42 specialized domain expert subagents covering TypeScript, React, databases, DevOps, testing, and more - with intelligent cross-delegation",
+      "version": "1.0.0",
+      "source": "./plugins/expert-agents"
+    }
+  ]
+}
