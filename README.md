@@ -7,7 +7,7 @@ A plugin marketplace for [Claude Code](https://claude.ai/claude-code) with devel
 Add this marketplace to your Claude Code installation:
 
 ```
-/plugin marketplace add github:GoogilyBoogily/googilyboogily-claude-power-tools
+/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools
 ```
 
 Then install the plugins you want:
