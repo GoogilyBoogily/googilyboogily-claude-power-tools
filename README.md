@@ -1,6 +1,6 @@
 # Claude Code Power Tools
 
-A plugin marketplace for [Claude Code](https://claude.ai/claude-code) with developer commands and expert subagents.
+A plugin marketplace for [Claude Code](https://claude.ai/claude-code) with developer commands, expert subagents, and specialized documentation generators.
 
 ## Quick Start
 
@@ -16,6 +16,7 @@ Then install the plugins you want:
 /plugin install dev-essentials@googilyboogily-claude-power-tools
 /plugin install architecture-toolkit@googilyboogily-claude-power-tools
 /plugin install expert-agents@googilyboogily-claude-power-tools
+/plugin install game-design-bible@googilyboogily-claude-power-tools
 ```
 
 ## Plugins
@@ -37,6 +38,12 @@ Meta-tools for creating commands, subagents, generating project toolkits, and de
 41 specialized domain expert subagents covering TypeScript, React, databases, DevOps, testing, and more -- with intelligent cross-delegation between agents.
 
 **41 agents** across 15 domains: ai, build-tools, database, devops, documentation, framework, frontend, nodejs, product, quality, react, research, systems, testing, typescript.
+
+### game-design-bible
+
+Procedurally create comprehensive Video Game Design Bibles through phased, interactive workflows with parallel specialist writers.
+
+**6 commands** (4 workflow + 2 reference) and **4 subagents** (systems-designer, narrative-designer, art-audio-director, game-design-reviewer).
 
 ## How It Works
 

@@ -22,6 +22,12 @@
       "description": "42 specialized domain expert subagents covering TypeScript, React, databases, DevOps, testing, and more - with intelligent cross-delegation",
       "version": "1.0.0",
       "source": "./plugins/expert-agents"
+    },
+    {
+      "name": "game-design-bible",
+      "description": "Procedurally create comprehensive Video Game Design Bibles through phased, interactive workflows with gap detection and parallel specialist writers",
+      "version": "1.0.0",
+      "source": "./plugins/docs/game-design-bible"
     }
   ]
 }
