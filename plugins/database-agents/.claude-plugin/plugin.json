@@ -1,0 +1,8 @@
+{
+  "name": "database-agents",
+  "description": "Database expert subagents for PostgreSQL, MongoDB, query optimization, and general database architecture",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

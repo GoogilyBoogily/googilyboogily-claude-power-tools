@@ -1,0 +1,8 @@
+{
+  "name": "typescript-agents",
+  "description": "TypeScript expert subagents for type system, build configuration, and general TypeScript/JavaScript development",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

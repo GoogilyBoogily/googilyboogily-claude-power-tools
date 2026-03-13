@@ -1,0 +1,8 @@
+{
+  "name": "framework-agents",
+  "description": "Framework expert subagents for NestJS and Next.js application development",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

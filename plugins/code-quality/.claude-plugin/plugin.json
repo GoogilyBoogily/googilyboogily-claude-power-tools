@@ -1,0 +1,8 @@
+{
+  "name": "code-quality",
+  "description": "Code review, dead code detection, and validate-and-fix commands for maintaining code quality",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

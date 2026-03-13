@@ -1,0 +1,8 @@
+{
+  "name": "dev-utilities",
+  "description": "Developer utility commands for cleanup tasks and bash timeout configuration",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

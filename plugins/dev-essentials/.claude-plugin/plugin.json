@@ -1,8 +1,0 @@
-{
-  "name": "dev-essentials",
-  "description": "Daily developer commands for git workflows, checkpoints, code quality, and configuration",
-  "version": "1.0.0",
-  "author": {
-    "name": "GoogilyBoogily"
-  }
-}

@@ -1,0 +1,8 @@
+{
+  "name": "build-tools-agents",
+  "description": "Build tool expert subagents for Vite and Webpack bundler configuration and optimization",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

@@ -6,22 +6,130 @@
   },
   "plugins": [
     {
-      "name": "dev-essentials",
-      "description": "Daily developer commands for git workflows, checkpoints, code quality, and configuration",
+      "name": "git-tools",
+      "description": "Git workflow commands for committing, checking out, status, pushing, and gitignore initialization",
       "version": "1.0.0",
-      "source": "./plugins/dev-essentials"
+      "source": "./plugins/git-tools"
     },
     {
-      "name": "architecture-toolkit",
-      "description": "Meta-tools for creating commands, subagents, generating project toolkits, and deep research",
+      "name": "checkpoint",
+      "description": "Create, list, and restore lightweight code checkpoints using git stash",
       "version": "1.0.0",
-      "source": "./plugins/architecture-toolkit"
+      "source": "./plugins/checkpoint"
     },
     {
-      "name": "expert-agents",
-      "description": "42 specialized domain expert subagents covering TypeScript, React, databases, DevOps, testing, and more - with intelligent cross-delegation",
+      "name": "code-quality",
+      "description": "Code review, dead code detection, and validate-and-fix commands for maintaining code quality",
       "version": "1.0.0",
-      "source": "./plugins/expert-agents"
+      "source": "./plugins/code-quality"
+    },
+    {
+      "name": "dev-utilities",
+      "description": "Developer utility commands for cleanup tasks and bash timeout configuration",
+      "version": "1.0.0",
+      "source": "./plugins/dev-utilities"
+    },
+    {
+      "name": "meta-toolkit",
+      "description": "Meta-tools for creating commands, subagents, and generating project-specific toolkits",
+      "version": "1.0.0",
+      "source": "./plugins/meta-toolkit"
+    },
+    {
+      "name": "deep-research",
+      "description": "Deep research command for comprehensive investigation using web search and analysis",
+      "version": "1.0.0",
+      "source": "./plugins/deep-research"
+    },
+    {
+      "name": "ai-agents",
+      "description": "AI/ML expert subagents for Vercel AI SDK, LLM architecture, and prompt engineering",
+      "version": "1.0.0",
+      "source": "./plugins/ai-agents"
+    },
+    {
+      "name": "build-tools-agents",
+      "description": "Build tool expert subagents for Vite and Webpack bundler configuration and optimization",
+      "version": "1.0.0",
+      "source": "./plugins/build-tools-agents"
+    },
+    {
+      "name": "database-agents",
+      "description": "Database expert subagents for PostgreSQL, MongoDB, query optimization, and general database architecture",
+      "version": "1.0.0",
+      "source": "./plugins/database-agents"
+    },
+    {
+      "name": "devops-agents",
+      "description": "DevOps expert subagents for Docker, Git workflows, GitHub Actions, and infrastructure",
+      "version": "1.0.0",
+      "source": "./plugins/devops-agents"
+    },
+    {
+      "name": "documentation-agents",
+      "description": "Documentation expert subagents for technical writing and documentation architecture",
+      "version": "1.0.0",
+      "source": "./plugins/documentation-agents"
+    },
+    {
+      "name": "framework-agents",
+      "description": "Framework expert subagents for NestJS and Next.js application development",
+      "version": "1.0.0",
+      "source": "./plugins/framework-agents"
+    },
+    {
+      "name": "frontend-agents",
+      "description": "Frontend expert subagents for accessibility, CSS/styling, and Flutter cross-platform development",
+      "version": "1.0.0",
+      "source": "./plugins/frontend-agents"
+    },
+    {
+      "name": "nodejs-agents",
+      "description": "Node.js expert subagents for runtime debugging and CLI tool development",
+      "version": "1.0.0",
+      "source": "./plugins/nodejs-agents"
+    },
+    {
+      "name": "product-agents",
+      "description": "Product expert subagents for product management, project management, and UX research",
+      "version": "1.0.0",
+      "source": "./plugins/product-agents"
+    },
+    {
+      "name": "quality-agents",
+      "description": "Code quality expert subagents for code review, architecture review, refactoring, linting, triage, code search, and dead code analysis",
+      "version": "1.0.0",
+      "source": "./plugins/quality-agents"
+    },
+    {
+      "name": "react-agents",
+      "description": "React expert subagents for component development and performance optimization",
+      "version": "1.0.0",
+      "source": "./plugins/react-agents"
+    },
+    {
+      "name": "research-agents",
+      "description": "Research expert subagent for web research, fact-finding, and multi-source information gathering",
+      "version": "1.0.0",
+      "source": "./plugins/research-agents"
+    },
+    {
+      "name": "systems-agents",
+      "description": "Systems programming expert subagents for Rust, game development, and performance engineering",
+      "version": "1.0.0",
+      "source": "./plugins/systems-agents"
+    },
+    {
+      "name": "testing-agents",
+      "description": "Testing expert subagents for test frameworks, E2E Playwright automation, and testing architecture",
+      "version": "1.0.0",
+      "source": "./plugins/testing-agents"
+    },
+    {
+      "name": "typescript-agents",
+      "description": "TypeScript expert subagents for type system, build configuration, and general TypeScript/JavaScript development",
+      "version": "1.0.0",
+      "source": "./plugins/typescript-agents"
     },
     {
       "name": "game-design-bible",

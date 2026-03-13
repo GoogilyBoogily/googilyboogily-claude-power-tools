@@ -1,0 +1,8 @@
+{
+  "name": "research-agents",
+  "description": "Research expert subagent for web research, fact-finding, and multi-source information gathering",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

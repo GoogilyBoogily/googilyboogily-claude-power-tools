@@ -1,0 +1,8 @@
+{
+  "name": "testing-agents",
+  "description": "Testing expert subagents for test frameworks, E2E Playwright automation, and testing architecture",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

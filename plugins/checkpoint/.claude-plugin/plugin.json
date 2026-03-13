@@ -1,0 +1,8 @@
+{
+  "name": "checkpoint",
+  "description": "Create, list, and restore lightweight code checkpoints using git stash",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

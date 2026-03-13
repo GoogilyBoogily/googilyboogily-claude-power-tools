@@ -1,0 +1,8 @@
+{
+  "name": "documentation-agents",
+  "description": "Documentation expert subagents for technical writing and documentation architecture",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

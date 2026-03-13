@@ -1,0 +1,8 @@
+{
+  "name": "systems-agents",
+  "description": "Systems programming expert subagents for Rust, game development, and performance engineering",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

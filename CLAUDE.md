@@ -4,26 +4,52 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Claude Code plugin marketplace** containing 4 plugins with 22 slash commands and 45 subagents. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
+This is a **Claude Code plugin marketplace** containing 23 granular plugins with 23 slash commands, 47 subagents, and 5 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
 
 Install: `/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools`
 
 ## Repository Structure
 
 ```
-.claude-plugin/marketplace.json    # Marketplace registry (lists all 4 plugins)
+.claude-plugin/marketplace.json    # Marketplace registry (lists all 23 plugins)
 plugins/
-  dev-essentials/                  # 12 commands: git, checkpoint, quality, dev, config
-  architecture-toolkit/            # 4 commands: create-command, create-subagent, generate-toolkit, research
-  expert-agents/                   # 41 subagents across 15 domains
+  # Command plugins (from dev-essentials)
+  git-tools/                       # 5 commands: commit, checkout, status, push, ignore-init
+  checkpoint/                      # 3 commands: create, list, restore
+  code-quality/                    # 3 commands: code-review, dead-code, validate-and-fix
+  dev-utilities/                   # 2 commands: cleanup, bash-timeout
+
+  # Command plugins (from architecture-toolkit)
+  meta-toolkit/                    # 3 commands: create-command, create-subagent, generate-toolkit
+  deep-research/                   # 1 command: research
+
+  # Agent plugins (from expert-agents, 15 domain-specific plugins)
+  ai-agents/                       # 3 agents: ai-sdk-expert, llm-architect, prompt-engineer
+  build-tools-agents/              # 2 agents: vite-expert, webpack-expert
+  database-agents/                 # 4 agents: database-expert, postgres-expert, mongodb-expert, optimizer
+  devops-agents/                   # 4 agents: devops-expert, docker-expert, git-expert, github-actions-expert
+  documentation-agents/            # 2 agents: documentation-expert, technical-writer
+  framework-agents/                # 2 agents: nestjs-expert, nextjs-expert
+  frontend-agents/                 # 3 agents: accessibility-expert, css-styling-expert, flutter-expert
+  nodejs-agents/                   # 2 agents: nodejs-expert, cli-expert
+  product-agents/                  # 3 agents: product-manager, project-manager, ux-researcher
+  quality-agents/                  # 7 agents: code-review-expert, architect-reviewer, refactoring-expert, linting-expert, triage-expert, code-search, dead-code-analyst
+  react-agents/                    # 2 agents: react-expert, react-performance-expert
+  research-agents/                 # 1 agent: research-expert
+  systems-agents/                  # 3 agents: rust-engineer, game-developer, performance-engineer
+  testing-agents/                  # 2 agents: testing-expert, e2e-playwright-expert
+  typescript-agents/               # 3 agents: typescript-expert, build-expert, type-expert
+
+  # Composite plugins (unchanged)
   docs/game-design-bible/          # 6 commands + 4 subagents: game design bible creation
+  docs/architecture-docs/          # 5 skills: ADR/HLD/LLD pipeline with research
 ```
 
-Each plugin has a `.claude-plugin/plugin.json` manifest. Commands live in `commands/` subdirectories, agents in `agents/` subdirectories.
+Each plugin has a `.claude-plugin/plugin.json` manifest. Commands live in `commands/` directories, agents in `agents/` directories.
 
 ## Authoring Commands
 
-Commands are markdown files in `commands/` directories. The file path becomes the command name: `commands/git/commit.md` → `/dev-essentials:git:commit`.
+Commands are markdown files in `commands/` directories. The file path becomes the command name: `commands/commit.md` → `/git-tools:commit`.
 
 Frontmatter fields:
 - `description` (required): What the command does
@@ -79,6 +105,8 @@ Pattern:
 - **DELEGATE** to a named specialist with the reason (e.g., "→ `postgres-expert` for MVCC, vacuum tuning, partitioning")
 
 Broader experts (e.g., `database-expert`) delegate to specialists (e.g., `postgres-expert`, `mongodb-expert`). Every agent should define stop conditions for when to hand off or exit.
+
+Agent names in YAML frontmatter are stable identifiers. The routing mesh references agents by these names, not by plugin paths. Cross-delegation works regardless of which plugin an agent lives in, and missing agents degrade gracefully.
 
 ## Plugin Manifest Format
 

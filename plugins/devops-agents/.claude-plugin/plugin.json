@@ -1,0 +1,8 @@
+{
+  "name": "devops-agents",
+  "description": "DevOps expert subagents for Docker, Git workflows, GitHub Actions, and infrastructure",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

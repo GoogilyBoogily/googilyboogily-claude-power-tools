@@ -1,0 +1,8 @@
+{
+  "name": "product-agents",
+  "description": "Product expert subagents for product management, project management, and UX research",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

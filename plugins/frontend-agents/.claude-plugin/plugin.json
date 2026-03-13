@@ -1,0 +1,8 @@
+{
+  "name": "frontend-agents",
+  "description": "Frontend expert subagents for accessibility, CSS/styling, and Flutter cross-platform development",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "nodejs-agents",
+  "description": "Node.js expert subagents for runtime debugging and CLI tool development",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}
