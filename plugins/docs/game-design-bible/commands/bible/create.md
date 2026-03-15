@@ -70,9 +70,10 @@ Wait for response.
 
 ### Step 3: Design Pillars
 Using the core fantasy and genre, draft 3-5 design pillars following the design pillar methodology:
-- Each pillar should be 2-5 words, actionable, falsifiable, and unique to this game
-- Present the drafted pillars to the user with brief reasoning
-- Ask: **"Do these pillars capture your vision? Adjust, add, or remove any."**
+- Each pillar should be 2-5 words, actionable, and unique to this game
+- For each pillar, present a "What This Rules Out" list (3+ items) as the primary explanation — counterexamples communicate the pillar's intent faster than descriptions
+- Present the drafted pillars with their counterexamples to the user
+- Ask: **"Do these counterexamples capture what your game is NOT? Adjust, add, or remove any."**
 
 Wait for approval or revision. If the user rejects the drafted pillars, ask targeted follow-up questions and redraft (max 2 iterations). After 2 rounds, accept the user's stated pillars directly.
 
@@ -104,12 +105,15 @@ Write these files:
 # Design Pillars — [Game Name]
 
 1. **[Pillar 1]** — [one-sentence explanation]
+   *What this rules out:* [thing], [thing], [thing]
 2. **[Pillar 2]** — [one-sentence explanation]
+   *What this rules out:* [thing], [thing], [thing]
 3. **[Pillar 3]** — [one-sentence explanation]
+   *What this rules out:* [thing], [thing], [thing]
 [4-5 if applicable]
 
 ---
-*These pillars are the supreme court of design decisions. When two good ideas conflict, pillars break the tie.*
+*These pillars are the supreme court of design decisions. When two good ideas conflict, pillars break the tie. When in doubt, check what each pillar rules out.*
 ```
 
 **`00-concept/vision.md`**:
@@ -147,7 +151,7 @@ Write these files:
 - [today's date]: Initial draft
 ```
 
-**`00-concept/design-pillars.md`**: Full reasoning behind each pillar (stress-test results, what each pillar approves/rejects).
+**`00-concept/design-pillars.md`**: Full reasoning behind each pillar — lead with "What This Rules Out" (3+ concrete items per pillar), then what it approves, then stress-test rationale.
 
 **`00-concept/mda-analysis.md`**: The MDA chain from Step 5 with validation notes.
 

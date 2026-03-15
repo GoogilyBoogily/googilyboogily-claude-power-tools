@@ -193,6 +193,7 @@ Structure narrative documents using these templates:
 
 ### 4. Validate Against Pillars
 - Every major narrative element must serve at least one design pillar
+- Cross-check narrative elements against each pillar's "What This Rules Out" list — if a narrative choice resembles something a pillar explicitly rules out, flag it
 - Narrative should reinforce (not contradict) the core loop
 - Story pacing should complement gameplay pacing
 - For narrative-light games: confirm that minimal narrative still provides adequate framing

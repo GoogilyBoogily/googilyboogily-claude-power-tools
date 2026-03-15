@@ -94,6 +94,7 @@ Structure every system document using this template:
 
 ### 4. Validate Against Pillars
 - Every mechanic must serve at least one design pillar
+- Cross-check against each pillar's "What This Rules Out" list — if a mechanic resembles something a pillar explicitly rules out, flag it as a contradiction
 - Flag any "orphaned" mechanics that don't align with pillars
 - Flag any pillars that this system could serve but doesn't
 

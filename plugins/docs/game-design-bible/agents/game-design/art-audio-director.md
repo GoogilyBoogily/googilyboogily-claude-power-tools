@@ -248,6 +248,7 @@ Structure documents using these templates:
 
 ### 4. Validate Against Pillars and Aesthetics
 - Visual style must reinforce target MDA aesthetics
+- Cross-check art/audio choices against each pillar's "What This Rules Out" list — if a visual or audio choice resembles something a pillar explicitly rules out, flag it
 - Color choices must support emotional goals from design pillars
 - Sound design must complement the core loop's feedback cycle
 - UI must not contradict the game's tone (e.g., gritty survival game with bubbly UI)
