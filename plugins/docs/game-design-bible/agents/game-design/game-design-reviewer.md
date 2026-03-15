@@ -45,6 +45,7 @@ Checks that every feature serves a pillar and every pillar is served by features
 5. Flag features that actively CONTRADICT a pillar
 6. Verify the core loop serves the majority of pillars
 7. Verify MDA aesthetics chain is internally consistent and aligns with pillars
+8. Check that each pillar's detailed documentation includes explicit "What This Rules Out" statements with ≥3 concrete, plausible items per pillar
 
 **Report format:**
 ```markdown
@@ -56,18 +57,22 @@ Checks that every feature serves a pillar and every pillar is served by features
 
 ### Orphaned Features (serve no pillar)
 - [feature] in [file] — no pillar alignment found
-  Severity: [MEDIUM|HIGH]
+  Severity: [MEDIUM|HIGH] — [one sentence why this severity level]
 
 ### Unserved Pillars (no feature serves them)
 - [pillar] — not referenced in any section
-  Severity: HIGH
+  Severity: HIGH — [one sentence why this severity level]
 
 ### Contradictions (feature opposes a pillar)
 - [feature] in [file] contradicts [pillar] because [reason]
-  Severity: CRITICAL
+  Severity: CRITICAL — [one sentence why this severity level]
 
 ### MDA Alignment
 [Assessment of whether mechanics→dynamics→aesthetics chain holds]
+
+### Counterexample Quality
+- [pillar] — [X] counterexamples listed. [Assessment: strong/weak/missing]
+  Severity: [HIGH if missing, MEDIUM if <3 items or too vague] — [one sentence why]
 ```
 
 ### Mode 2: Internal Contradictions Check
@@ -87,7 +92,7 @@ Cross-references all sections for conflicting statements, inconsistent terminolo
 
 ### Cross-Section Conflicts
 - **[Section A] vs [Section B]**: [contradiction description]
-  Severity: [CRITICAL|HIGH|MEDIUM|LOW]
+  Severity: [CRITICAL|HIGH|MEDIUM|LOW] — [one sentence why this severity level]
   Suggestion: [how to resolve]
 
 ### Terminology Inconsistencies
@@ -111,7 +116,7 @@ Scans for 15 known GDD pitfalls that commonly derail game projects.
 8. **No Session Structure** — No plan for play session length or save points
 9. **Missing Feedback Loops** — Systems with no player-facing feedback
 10. **Orphaned Systems** — Systems disconnected from the core loop
-11. **Unfalsifiable Pillars** — Pillars too vague to reject any feature
+11. **Unfalsifiable Pillars** — Pillars without concrete "What This Rules Out" statements, or whose counterexamples are too vague to actually reject a feature proposal
 12. **Missing Difficulty Strategy** — No difficulty curve or accessibility options
 13. **Scope vs Resources Mismatch** — Ambitions exceed stated resources/timeline
 14. **No Prototype Criteria** — No definition of what a successful prototype looks like
@@ -132,10 +137,30 @@ Scans for 15 known GDD pitfalls that commonly derail game projects.
 [1-2 paragraph summary of the bible's health]
 ```
 
+## Context Injection
+
+When the invoking Task prompt includes any of these context fields, apply the following rules:
+
+### USER_CONTEXT
+- Weight user-flagged areas more heavily during audit — spend extra attention on sections the user called out
+- If NO issue is found in a user-flagged area, say so explicitly: "User flagged [area] — no issues found"
+- Do not fabricate issues in flagged areas just because the user mentioned them
+
+### KNOWN_ISSUES
+- Do NOT flag known issues as findings — the user is already aware of them
+- If a known issue is relevant to another finding (e.g., a placeholder section contributes to a contradiction), mention it as context only: "Note: [known issue] may contribute to this, but was excluded per user request"
+- Never elevate a known issue to CRITICAL/HIGH severity
+
+### PILLAR_AUDIT_RESULTS
+- Use **confirmed** findings from the pillar audit as additional signal — if a pillar inconsistency was confirmed, check whether it also creates contradictions or triggers pitfalls
+- Do NOT re-flag **dismissed** items — the user has already reviewed and acknowledged them
+- Reference confirmed pillar findings when they support your own findings: "This aligns with confirmed pillar issue: [title]"
+
 ## Output Rules
 
 - Write your full report to the path specified in the Task prompt (typically `<output-dir>/reviews/<report-name>.md`)
-- After writing, return ONLY: (1) file path written, (2) top 3 findings with severity, (3) counts: X critical, Y high, Z medium, W low
+- After writing, return ONLY: (1) file path written, (2) ALL findings with severity and one-sentence justification each, (3) counts: X critical, Y high, Z medium, W low
+- When `USER_CONTEXT` areas are provided, include a "User-Flagged Areas Status" section in the return listing each flagged area and whether issues were found
 - NEVER modify bible section files — you are a reviewer, not an editor
 - If you find issues that need fixing, document them in the report with actionable suggestions
 - Always read ALL files in the bible directory before producing findings — partial reads lead to false positives
@@ -150,6 +175,8 @@ Scans for 15 known GDD pitfalls that commonly derail game projects.
 
 ### Pillar Validation Rules
 - A good pillar rejects at least 3 plausible features (if it rejects nothing, it's too vague)
+- Each pillar must have explicit "What This Rules Out" documentation — missing counterexamples = HIGH severity
+- Counterexamples should be plausible features someone might actually propose, not straw men
 - Each pillar should be served by 2+ sections minimum
 - Contradicting a pillar is CRITICAL severity; not referencing one is HIGH
 
