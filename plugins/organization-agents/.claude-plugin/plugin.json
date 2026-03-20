@@ -1,0 +1,8 @@
+{
+  "name": "organization-agents",
+  "description": "File and folder organization expert subagent for taxonomy design, directory restructuring, and anti-pattern detection",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}
