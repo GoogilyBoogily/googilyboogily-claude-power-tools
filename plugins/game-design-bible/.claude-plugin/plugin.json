@@ -1,0 +1,8 @@
+{
+  "name": "game-design-bible",
+  "description": "Procedurally create comprehensive Video Game Design Bibles and generate game-development-aware HLD documents through phased, interactive workflows with gap detection, parallel specialist writers, and pillar alignment",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

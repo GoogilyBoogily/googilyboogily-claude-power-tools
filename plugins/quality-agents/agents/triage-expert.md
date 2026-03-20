@@ -93,4 +93,4 @@ If you added any temporary debug code during investigation:
 - STOP and recommend `research-expert` when external research is needed
 - STOP if diagnosis is complete — do not begin implementation
 
-**Valid agents for handoff**: `architect-reviewer`, `code-review-expert`, `optimizer`, `performance-engineer`, `research-expert`, `prompt-engineer`, `technical-writer`, `cli-expert`, `nestjs-expert`, `flutter-expert`, `rust-engineer`, `game-developer`, `ai-sdk-expert`, `llm-architect`, `oracle`
+**Valid agents for handoff**: `architect-reviewer`, `code-review-expert`, `optimizer`, `performance-engineer`, `research-expert`, `prompt-engineer`, `technical-writer`, `cli-expert`, `nestjs-expert`, `flutter-expert`, `rust-engineer`, `game-developer`, `ai-sdk-expert`, `llm-architect`

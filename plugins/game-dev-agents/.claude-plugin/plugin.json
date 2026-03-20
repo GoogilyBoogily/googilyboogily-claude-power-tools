@@ -1,0 +1,8 @@
+{
+  "name": "game-dev-agents",
+  "description": "Game engine programming expert subagent for architecture, ECS patterns, render pipeline optimization, physics systems, and multiplayer networking",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

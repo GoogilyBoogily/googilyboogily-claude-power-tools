@@ -4,26 +4,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Claude Code plugin marketplace** containing 24 granular plugins with 23 slash commands, 49 subagents, and 6 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
+This is a **Claude Code plugin marketplace** containing 22 granular plugins with 23 slash commands, 50 subagents, and 7 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
 
 Install: `/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools`
 
 ## Repository Structure
 
 ```
-.claude-plugin/marketplace.json    # Marketplace registry (lists all 23 plugins)
+.claude-plugin/marketplace.json    # Marketplace registry (lists all 22 plugins)
 plugins/
-  # Command plugins (from dev-essentials)
+  # Command plugins
   git-tools/                       # 5 commands: commit, checkout, status, push, ignore-init
   checkpoint/                      # 3 commands: create, list, restore
   code-quality/                    # 3 commands: code-review, dead-code, validate-and-fix
   dev-utilities/                   # 2 commands: cleanup, bash-timeout
-
-  # Command plugins (from architecture-toolkit)
   meta-toolkit/                    # 3 commands: create-command, create-subagent, generate-toolkit
-  deep-research/                   # 1 command: research
 
-  # Agent plugins (from expert-agents, 15 domain-specific plugins)
+  # Research (command + agent)
+  research/                        # 1 command: research, 1 agent: research-expert
+
+  # Agent plugins (14 domain-specific plugins)
   ai-agents/                       # 3 agents: ai-sdk-expert, llm-architect, prompt-engineer
   build-tools-agents/              # 2 agents: vite-expert, webpack-expert
   database-agents/                 # 4 agents: database-expert, postgres-expert, mongodb-expert, optimizer
@@ -33,16 +33,16 @@ plugins/
   frontend-agents/                 # 3 agents: accessibility-expert, css-styling-expert, flutter-expert
   nodejs-agents/                   # 2 agents: nodejs-expert, cli-expert
   product-agents/                  # 3 agents: product-manager, project-manager, ux-researcher
-  quality-agents/                  # 7 agents: code-review-expert, architect-reviewer, refactoring-expert, linting-expert, triage-expert, code-search, dead-code-analyst
+  quality-agents/                  # 8 agents: code-review-expert, architect-reviewer, refactoring-expert, linting-expert, triage-expert, code-search, dead-code-analyst, file-organizer
   react-agents/                    # 2 agents: react-expert, react-performance-expert
-  research-agents/                 # 1 agent: research-expert
-  systems-agents/                  # 3 agents: rust-engineer, game-developer, performance-engineer
+  systems-agents/                  # 2 agents: rust-engineer, performance-engineer
   testing-agents/                  # 2 agents: testing-expert, e2e-playwright-expert
   typescript-agents/               # 3 agents: typescript-expert, build-expert, type-expert
+  game-dev-agents/                 # 1 agent: game-developer
 
-  # Composite plugins (unchanged)
-  docs/game-design-bible/          # 6 commands + 4 subagents: game design bible creation
-  docs/architecture-docs/          # 5 skills: ADR/HLD/LLD pipeline with research
+  # Composite plugins
+  game-design-bible/               # 6 commands + 5 agents + 1 skill: game design bible creation + HLD generation
+  architecture-docs/               # 5 skills: ADR/HLD/LLD pipeline with research
 ```
 
 Each plugin has a `.claude-plugin/plugin.json` manifest. Commands live in `commands/` directories, agents in `agents/` directories.

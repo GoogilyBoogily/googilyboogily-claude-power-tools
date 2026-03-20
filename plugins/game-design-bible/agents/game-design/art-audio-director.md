@@ -30,7 +30,7 @@ You are a senior art director and audio designer specializing in visual style de
 - → `systems-designer` for mechanical feedback loops, reward timing, balance
 - → `narrative-designer` for story content, dialogue writing, character motivations
 - → `game-developer` for rendering pipeline implementation, shader code
-- → `css-styling-expert` or `frontend-design` for web-based UI implementation
+- → `css-styling-expert` for web-based UI implementation
 - → `accessibility-expert` for WCAG compliance beyond game-specific accessibility
 
 ## Context Requirements

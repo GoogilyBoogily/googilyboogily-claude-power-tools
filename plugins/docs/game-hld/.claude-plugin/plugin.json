@@ -1,8 +1,0 @@
-{
-  "name": "game-hld",
-  "description": "Generate game-development-aware HLD documents from a Game Design Bible with parallel batch generation and pillar alignment",
-  "version": "1.0.0",
-  "author": {
-    "name": "GoogilyBoogily"
-  }
-}

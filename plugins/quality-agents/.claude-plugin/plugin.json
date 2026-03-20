@@ -1,6 +1,6 @@
 {
   "name": "quality-agents",
-  "description": "Code quality expert subagents for code review, architecture review, refactoring, linting, triage, code search, and dead code analysis",
+  "description": "Code quality expert subagents for code review, architecture review, refactoring, linting, triage, code search, dead code analysis, and file organization",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"
