@@ -25,7 +25,7 @@ $ARGUMENTS
 Extract from `$ARGUMENTS`:
 - **Bible Directory**: First non-flag argument (default: `docs/game-design-bible/`)
 - **Features**: `--features f1,f2,...` — comma-separated list of features to generate HLDs for (skip interactive selection)
-- **Output Directory**: `--output-dir <path>` (default: `docs/game-hld/`)
+- **Output Directory**: `--output-dir <path>` (default: `docs/hld/`)
 - **Codebase Path**: `--codebase <path>` — path to existing game codebase for technical context
 
 ---

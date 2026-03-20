@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Claude Code plugin marketplace** containing 23 granular plugins with 23 slash commands, 47 subagents, and 5 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
+This is a **Claude Code plugin marketplace** containing 24 granular plugins with 23 slash commands, 49 subagents, and 6 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
 
 Install: `/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools`
 
