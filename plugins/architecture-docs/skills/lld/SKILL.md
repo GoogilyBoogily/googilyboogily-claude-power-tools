@@ -108,4 +108,4 @@ Save only after the user confirms. Tell the user where the file was saved and hi
 
 If the HLD was itself created from an ADR, also update the ADR's "More Information" section to add: `See [LLD: {title}]({relative-path-to-lld}) for implementation details.` Then mention the full pipeline chain: "This completes the ADR → HLD → LLD pipeline for this decision."
 
-Suggest the user begin implementation following the file-level implementation plan, starting with the first PR.
+**Pipeline continuation:** Ask the user if they'd like to begin implementation now by invoking `/architecture-docs:implement` with the path to this LLD. This extends the ADR → HLD → LLD → implement pipeline, translating the design directly into phased, verified code.

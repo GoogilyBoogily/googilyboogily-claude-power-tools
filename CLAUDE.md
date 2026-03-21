@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Claude Code plugin marketplace** containing 22 granular plugins with 23 slash commands, 50 subagents, and 7 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
+This is a **Claude Code plugin marketplace** containing 22 granular plugins with 23 slash commands, 50 subagents, and 9 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
 
 Install: `/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools`
 
@@ -42,7 +42,7 @@ plugins/
 
   # Composite plugins
   game-design-bible/               # 6 commands + 5 agents + 1 skill: game design bible creation + HLD generation
-  architecture-docs/               # 5 skills: ADR/HLD/LLD pipeline with research
+  architecture-docs/               # 7 skills: ADR/HLD/LLD pipeline with research, doc review, and implementation
 ```
 
 Each plugin has a `.claude-plugin/plugin.json` manifest. Commands live in `commands/` directories, agents in `agents/` directories.
