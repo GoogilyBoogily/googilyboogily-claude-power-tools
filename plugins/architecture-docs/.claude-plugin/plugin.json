@@ -1,7 +1,7 @@
 {
   "name": "architecture-docs",
-  "description": "Interactive ADR → HLD → LLD pipeline with code and web research skills for architecture documentation",
-  "version": "1.0.0",
+  "description": "ADR → HLD → LLD pipeline with gather/generate/audit phases, context isolation, and parallel code + web research",
+  "version": "2.0.0",
   "author": {
     "name": "GoogilyBoogily"
   }

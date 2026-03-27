@@ -184,11 +184,11 @@
     },
     {
       "name": "architecture-docs",
-      "description": "Interactive ADR, HLD, and LLD pipeline with PR doc review and design-to-implementation skills for architecture documentation",
-      "version": "1.0.0",
+      "description": "ADR → HLD → LLD pipeline with gather/generate/audit phases, context isolation, parallel code + web research, and interactive issue resolution",
+      "version": "2.0.0",
       "source": "./plugins/architecture-docs",
       "category": "documentation",
-      "keywords": ["adr", "hld", "lld", "architecture", "design-docs", "review", "implement", "pr", "github"]
+      "keywords": ["adr", "hld", "lld", "architecture", "design-docs", "audit", "review", "implement", "pipeline"]
     }
   ]
 }
