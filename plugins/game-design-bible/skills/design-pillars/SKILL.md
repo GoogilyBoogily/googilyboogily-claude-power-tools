@@ -1,8 +1,9 @@
 ---
-description: Design pillars methodology — how to formulate pillars, real-world examples, and anti-patterns
+name: design-pillars
+description: "Design pillars methodology reference — how to formulate pillars, real-world examples (The Last of Us, Breath of the Wild, Hades), anti-patterns, and the 'What This Rules Out' approach. Use when discussing or creating design pillars for games."
+user-invocable: false
 allowed-tools: ""
 model: haiku
-category: reference
 ---
 
 # Design Pillars Reference

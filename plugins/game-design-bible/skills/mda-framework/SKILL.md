@@ -1,8 +1,9 @@
 ---
-description: MDA framework cheat-sheet — Mechanics, Dynamics, Aesthetics with design validation method
+name: mda-framework
+description: "MDA framework cheat-sheet — Mechanics, Dynamics, Aesthetics causal chain, 8 aesthetic types with examples, design validation method, and common pitfalls. Use when discussing MDA analysis or game design aesthetics."
+user-invocable: false
 allowed-tools: ""
 model: haiku
-category: reference
 ---
 
 # MDA Framework Reference

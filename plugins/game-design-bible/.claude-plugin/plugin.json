@@ -1,7 +1,7 @@
 {
   "name": "game-design-bible",
-  "description": "Procedurally create comprehensive Video Game Design Bibles and generate game-development-aware HLD documents through phased, interactive workflows with gap detection, parallel specialist writers, and pillar alignment",
-  "version": "1.0.0",
+  "description": "Game Design Bible creation pipeline with per-phase gather/generate/audit, context isolation, parallel specialist agents, pillar-first design, and bible-to-HLD generation",
+  "version": "2.0.0",
   "author": {
     "name": "GoogilyBoogily"
   }
