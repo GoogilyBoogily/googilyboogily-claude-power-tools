@@ -40,11 +40,11 @@
     },
     {
       "name": "meta-toolkit",
-      "description": "Meta-tools for creating commands, subagents, and generating project-specific toolkits",
+      "description": "Generate project-specific toolkits by analyzing codebase and deriving tailored skills and subagents",
       "version": "1.0.0",
       "source": "./plugins/meta-toolkit",
       "category": "commands",
-      "keywords": ["scaffolding", "generator", "command", "subagent"]
+      "keywords": ["scaffolding", "generator", "toolkit"]
     },
     {
       "name": "research",
@@ -189,6 +189,14 @@
       "source": "./plugins/architecture-docs",
       "category": "documentation",
       "keywords": ["adr", "hld", "lld", "architecture", "design-docs", "audit", "review", "implement", "pipeline"]
+    },
+    {
+      "name": "artifact-toolkit",
+      "description": "Author and audit Claude Code skills, commands, and agents with quality checklists, research-backed workflows, and best-practice templates",
+      "version": "1.0.0",
+      "source": "./plugins/artifact-toolkit",
+      "category": "commands",
+      "keywords": ["skill", "command", "agent", "authoring", "audit", "quality", "scaffolding", "meta"]
     }
   ]
 }

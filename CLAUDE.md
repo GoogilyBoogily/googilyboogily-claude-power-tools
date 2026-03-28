@@ -4,21 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Claude Code plugin marketplace** containing 22 granular plugins with 17 slash commands, 50 subagents, and 43 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
+This is a **Claude Code plugin marketplace** containing 23 granular plugins with 16 slash commands, 50 subagents, and 49 skills. Users install only the plugins they need. There is no build system, test suite, or compiled code — everything is markdown content with YAML frontmatter.
 
 Install: `/plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools`
 
 ## Repository Structure
 
 ```
-.claude-plugin/marketplace.json    # Marketplace registry (lists all 22 plugins)
+.claude-plugin/marketplace.json    # Marketplace registry (lists all 23 plugins)
 plugins/
   # Command plugins
   git-tools/                       # 5 commands: commit, checkout, status, push, ignore-init
   checkpoint/                      # 3 commands: create, list, restore
   code-quality/                    # 3 commands: code-review, dead-code, validate-and-fix
   dev-utilities/                   # 2 commands: cleanup, bash-timeout
-  meta-toolkit/                    # 3 commands: create-command, create-subagent, generate-toolkit
+  meta-toolkit/                    # 1 command: generate-toolkit
 
   # Research (command + agent)
   research/                        # 1 command: research, 1 agent: research-expert
@@ -39,6 +39,9 @@ plugins/
   testing-agents/                  # 2 agents: testing-expert, e2e-playwright-expert
   typescript-agents/               # 3 agents: typescript-expert, build-expert, type-expert
   game-dev-agents/                 # 1 agent: game-developer
+
+  # Authoring & auditing
+  artifact-toolkit/                # 6 skills: skill-create, skill-audit, command-create, command-audit, agent-create, agent-audit
 
   # Composite plugins
   game-design-bible/               # 28 skills + 5 agents: per-phase gather/generate/audit bible pipeline with cross-cutting review + bible-to-HLD pipeline
