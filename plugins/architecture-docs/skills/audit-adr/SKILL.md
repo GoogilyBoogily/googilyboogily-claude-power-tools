@@ -1,7 +1,6 @@
 ---
 name: audit-adr
 description: "Audit an Architecture Decision Record for MADR 4.0.0 compliance, source integrity, completeness, and internal consistency. Walks through each issue interactively with resolution options including parallel code + web research."
-disable-model-invocation: true
 context: fork
 argument-hint: "[adr-path] [--context path-to-context-file]"
 allowed-tools: Read, Glob, Grep, Write, Edit, Task, AskUserQuestion, WebSearch, WebFetch

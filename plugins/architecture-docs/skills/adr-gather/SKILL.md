@@ -1,7 +1,6 @@
 ---
 name: adr-gather
 description: "Gather context and requirements for an Architecture Decision Record. Interactive Q&A session that explores the codebase, researches online, and compiles a structured context file for the ADR generator. Use when starting a new architectural decision."
-disable-model-invocation: true
 context: fork
 argument-hint: "[decision topic]"
 allowed-tools: Read, Glob, Grep, Skill, Task, AskUserQuestion, WebSearch, WebFetch

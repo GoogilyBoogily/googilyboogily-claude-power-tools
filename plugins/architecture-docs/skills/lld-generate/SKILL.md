@@ -1,7 +1,6 @@
 ---
 name: lld-generate
 description: "Generate a Low Level Design document from a gathered context file. Runs with clean context — reads the context file and produces a complete LLD with method signatures, sequence diagrams, error catalogs, and implementation plan. Non-interactive."
-disable-model-invocation: true
 context: fork
 argument-hint: "[context-file] [--hld path-to-hld]"
 allowed-tools: Read, Write, Edit, Glob, Grep

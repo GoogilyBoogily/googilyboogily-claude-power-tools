@@ -1,7 +1,6 @@
 ---
 name: hld-gather
 description: "Gather context and requirements for a High Level Design document. Interactive Q&A session that explores the codebase, researches online, and compiles a structured context file for the HLD generator. Use when planning significant architectural changes."
-disable-model-invocation: true
 context: fork
 argument-hint: "[description] [--adr path-to-adr]"
 allowed-tools: Read, Glob, Grep, Skill, Task, AskUserQuestion, WebSearch, WebFetch

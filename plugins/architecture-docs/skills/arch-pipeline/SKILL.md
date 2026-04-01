@@ -1,7 +1,6 @@
 ---
 name: arch-pipeline
 description: "Run the full architecture documentation pipeline: ADR gather → generate → audit → HLD gather → generate → audit → LLD gather → generate → audit. All phases run with clean context isolation. Each audit walks through issues interactively."
-disable-model-invocation: true
 argument-hint: "[decision topic]"
 allowed-tools: Skill, Read, AskUserQuestion, Bash(ls:*), Bash(mkdir:*)
 model: opus

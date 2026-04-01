@@ -1,7 +1,6 @@
 ---
 name: audit-hld
 description: "Audit a High Level Design document for template compliance, source integrity, ADR alignment, architectural completeness, and context fidelity. Walks through each issue interactively with resolution options including parallel code + web research."
-disable-model-invocation: true
 context: fork
 argument-hint: "[hld-path] [--context path] [--adr path]"
 allowed-tools: Read, Glob, Grep, Write, Edit, Task, AskUserQuestion, WebSearch, WebFetch

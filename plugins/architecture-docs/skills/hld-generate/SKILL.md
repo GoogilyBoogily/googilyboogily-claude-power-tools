@@ -1,7 +1,6 @@
 ---
 name: hld-generate
 description: "Generate a High Level Design document from a gathered context file. Runs with clean context — reads the context file and produces a complete HLD. Non-interactive."
-disable-model-invocation: true
 context: fork
 argument-hint: "[context-file] [--adr path-to-adr]"
 allowed-tools: Read, Write, Edit, Glob, Grep

@@ -1,7 +1,6 @@
 ---
 name: adr-generate
 description: "Generate an Architecture Decision Record from a gathered context file. Runs with clean context — reads the context file and produces a complete MADR 4.0.0 document. Non-interactive."
-disable-model-invocation: true
 context: fork
 argument-hint: "[context-file]"
 allowed-tools: Read, Write, Edit, Glob, Grep

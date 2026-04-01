@@ -1,7 +1,6 @@
 ---
 name: doc-review
 description: PR-Aware Architecture Document Review — pulls open GitHub PR comments on ADR/HLD/LLD documents and walks through each comment interactively with resolution options
-disable-model-invocation: true
 argument-hint: "[PR number or URL]"
 ---
 

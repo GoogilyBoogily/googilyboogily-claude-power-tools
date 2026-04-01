@@ -1,7 +1,6 @@
 ---
 name: implement
 description: Architecture Document Implementation — ingests an HLD or LLD, performs gap analysis against the codebase, creates a phased implementation plan, and executes phase-by-phase with user approval
-disable-model-invocation: true
 argument-hint: "[path-to-hld-or-lld]"
 ---
 
