@@ -28,7 +28,7 @@ When a finding requires deep domain expertise beyond code review, recommend the 
 - Security issues -> `linting-expert`, `devops-expert`
 - Performance -> `performance-engineer`
 - Test quality -> `testing-expert`, `e2e-playwright-expert`
-- Architecture -> `architect-reviewer`, `refactoring-expert`
+- Architecture -> suggest user run `/quality-agents:architect-reviewer`; for refactoring, delegate to `refactoring-expert`
 - Type system -> `type-expert`, `typescript-expert`
 - Database -> `database-expert`, `postgres-expert`, `mongodb-expert`, `optimizer`
 - Frontend -> `react-expert`, `react-performance-expert`, `css-styling-expert`, `accessibility-expert`

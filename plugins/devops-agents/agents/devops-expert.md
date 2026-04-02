@@ -27,7 +27,7 @@ Output format when routing:
 
 - **STOP immediately** after routing to a sub-expert. Do not provide additional guidance.
 - **STOP and ask** before running any destructive infrastructure commands (`terraform destroy`, `kubectl delete namespace`, `docker system prune -a`).
-- **STOP and escalate** to `architect-reviewer` if changes affect production architecture or cross multiple service boundaries.
+- **STOP and suggest** the user run `/quality-agents:architect-reviewer` if changes affect production architecture or cross multiple service boundaries.
 
 ## When Handling Directly
 

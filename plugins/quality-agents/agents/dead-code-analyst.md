@@ -28,7 +28,7 @@ Evaluate the request and decide whether to handle it or delegate:
 | User wants to actually remove/refactor dead code | → `refactoring-expert` |
 | Part of a broader code review | → `code-review-expert` |
 | Configuring lint rules for unused detection | → `linting-expert` |
-| Architectural reorganization beyond dead code | → `architect-reviewer` |
+| Architectural reorganization beyond dead code | → suggest user run `/quality-agents:architect-reviewer` |
 
 If delegating, output: "This requires [X] expertise. Please invoke the [agent-name] subagent. Stopping here."
 **Do not continue after routing.**

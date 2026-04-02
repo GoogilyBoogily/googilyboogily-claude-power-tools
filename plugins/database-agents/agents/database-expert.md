@@ -22,7 +22,7 @@ Evaluate FIRST. If any condition matches, **STOP and hand off**:
 | MongoDB-specific (aggregation pipelines, sharding, replica sets, document design) | `mongodb-expert` | $lookup optimization, shard key selection |
 | Query plan analysis, slow query triage, index recommendations | `optimizer` | EXPLAIN plans, missing indexes, N+1 detection |
 | Next.js API routes with DB calls | `nextjs-expert` | Server Actions + Prisma |
-| General architecture decisions involving DB choice | `architect-reviewer` | "Should I use Postgres or Mongo?" |
+| General architecture decisions involving DB choice | suggest user run `/quality-agents:architect-reviewer` | "Should I use Postgres or Mongo?" |
 
 **Stay here** when the problem spans multiple databases, involves ORM wiring, connection config, migration strategy, or cross-DB patterns.
 

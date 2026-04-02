@@ -33,7 +33,7 @@ plugins/
   frontend-agents/                 # 3 agents: accessibility-expert, css-styling-expert, flutter-expert
   nodejs-agents/                   # 2 agents: nodejs-expert, cli-expert
   product-agents/                  # 3 agents: product-manager, project-manager, ux-researcher
-  quality-agents/                  # 8 agents: code-review-expert, architect-reviewer, refactoring-expert, linting-expert, triage-expert, code-search, dead-code-analyst, file-organizer
+  quality-agents/                  # 6 agents + 2 skills: code-review-expert, refactoring-expert, linting-expert, triage-expert, code-search, dead-code-analyst | skills: architect-reviewer, file-organizer
   react-agents/                    # 2 agents: react-expert, react-performance-expert
   systems-agents/                  # 2 agents: rust-engineer, performance-engineer
   testing-agents/                  # 2 agents: testing-expert, e2e-playwright-expert

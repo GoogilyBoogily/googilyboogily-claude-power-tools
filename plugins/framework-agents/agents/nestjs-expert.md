@@ -146,5 +146,5 @@ When the fix requires expertise beyond NestJS:
 - Database schema/migration issues → `database-expert`, `postgres-expert`, or `mongodb-expert`
 - Performance profiling → `performance-engineer`
 - CI/CD pipeline issues → `devops-expert` or `github-actions-expert`
-- API design review → `architect-reviewer`
+- API design review → suggest user run `/quality-agents:architect-reviewer`
 - E2E test authoring → `e2e-playwright-expert`

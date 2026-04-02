@@ -19,7 +19,7 @@ If the domain is immediately obvious, recommend the specialist and stop:
 - Database query problems → `optimizer`
 - Build system failures → domain-specific build expert
 - Performance degradation → `performance-engineer`
-- Architecture concerns → `architect-reviewer`
+- Architecture concerns → suggest user run `/quality-agents:architect-reviewer`
 - Research needed → `research-expert`
 
 Output: "This requires [domain] expertise. Use `[agent-name]`. Context: [summary]" — then STOP.
@@ -88,9 +88,9 @@ If you added any temporary debug code during investigation:
 **STOP conditions**:
 - STOP and recommend `optimizer` for database query performance issues
 - STOP and recommend `performance-engineer` for system-level performance profiling
-- STOP and recommend `architect-reviewer` for architectural design concerns
+- STOP and recommend the user run `/quality-agents:architect-reviewer` for architectural design concerns
 - STOP and recommend `code-review-expert` for code quality or review tasks
 - STOP and recommend `research-expert` when external research is needed
 - STOP if diagnosis is complete — do not begin implementation
 
-**Valid agents for handoff**: `architect-reviewer`, `code-review-expert`, `optimizer`, `performance-engineer`, `research-expert`, `prompt-engineer`, `technical-writer`, `cli-expert`, `nestjs-expert`, `flutter-expert`, `rust-engineer`, `game-developer`, `ai-sdk-expert`, `llm-architect`
+**Valid agents for handoff**: `code-review-expert`, `optimizer`, `performance-engineer`, `research-expert`, `prompt-engineer`, `technical-writer`, `cli-expert`, `nestjs-expert`, `flutter-expert`, `rust-engineer`, `game-developer`, `ai-sdk-expert`, `llm-architect`
