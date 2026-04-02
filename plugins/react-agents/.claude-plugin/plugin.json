@@ -1,6 +1,6 @@
 {
   "name": "react-agents",
-  "description": "React expert subagents for component development and performance optimization",
+  "description": "React expert subagents for component development and performance optimization. Enhanced by: framework-agents, frontend-agents, testing-agents, typescript-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"

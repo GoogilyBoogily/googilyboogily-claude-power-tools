@@ -1,6 +1,6 @@
 {
   "name": "typescript-agents",
-  "description": "TypeScript expert subagents for type system, build configuration, and general TypeScript/JavaScript development",
+  "description": "TypeScript expert subagents for type system, build configuration, and general TypeScript/JavaScript development. Enhanced by: react-agents, testing-agents, devops-agents, quality-agents, build-tools-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"

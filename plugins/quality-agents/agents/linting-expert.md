@@ -3,6 +3,8 @@ name: linting-expert
 model: sonnet
 description: PROACTIVELY invoke for ESLint/Prettier/Stylelint configuration issues, rule conflicts, formatting inconsistencies, custom rule development, monorepo linting setup, or static analysis tooling problems
 category: code-quality
+color: purple
+displayName: Linting Expert
 tools: Read, Edit, Bash, Grep, Glob
 ---
 

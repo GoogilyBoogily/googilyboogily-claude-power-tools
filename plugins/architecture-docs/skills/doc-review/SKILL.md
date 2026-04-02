@@ -2,6 +2,7 @@
 name: doc-review
 description: PR-Aware Architecture Document Review — pulls open GitHub PR comments on ADR/HLD/LLD documents and walks through each comment interactively with resolution options
 argument-hint: "[PR number or URL]"
+allowed-tools: Bash(gh:*), Read, Edit, Write, Grep, Glob
 ---
 
 # PR-Aware Architecture Document Review

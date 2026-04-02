@@ -35,7 +35,7 @@ Output: "This requires [X] expertise. Please invoke the [agent-name] subagent. S
 - **STOP** if you cannot reproduce the issue after 2 diagnostic attempts -- report findings and ask the user for more context
 - **STOP** if the fix requires changes to infrastructure, CI/CD, or deployment -- route to `devops-expert`
 
-## When Invoked
+## Methodology
 
 1. Detect project setup (use Read/Grep/Glob first, shell as fallback):
    - Node version, package manager (check lockfiles), module type (`package.json` "type" field), framework

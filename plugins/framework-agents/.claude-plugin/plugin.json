@@ -1,6 +1,6 @@
 {
   "name": "framework-agents",
-  "description": "Framework expert subagents for NestJS and Next.js application development",
+  "description": "Framework expert subagents for NestJS and Next.js application development. Enhanced by: database-agents, react-agents, typescript-agents, testing-agents, devops-agents, frontend-agents, nodejs-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"

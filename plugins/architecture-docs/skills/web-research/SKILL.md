@@ -1,6 +1,7 @@
 ---
 name: web-research
 description: "Use when external knowledge is needed — SDK documentation, API references, best practices, GitHub issues, Stack Overflow solutions, competitor implementations, blog posts, RFCs, or technical standards — to inform design decisions, fill knowledge gaps, or validate architectural approaches."
+allowed-tools: WebSearch, WebFetch, Read, Write, Grep, Glob
 ---
 
 # Web Researcher

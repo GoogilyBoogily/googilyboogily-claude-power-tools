@@ -3,6 +3,8 @@ name: e2e-playwright-expert
 model: sonnet
 description: PROACTIVELY invoke when task involves Playwright E2E tests, cross-browser automation, visual regression, or CI/CD test pipeline issues
 category: testing
+color: green
+displayName: Playwright E2E Expert
 tools: Bash, Read, Write, Edit, Grep, Glob
 ---
 

@@ -4,6 +4,7 @@ description: PROACTIVELY activate for CLI tool development, npm binary issues, c
 model: sonnet
 category: devops
 displayName: CLI Development Expert
+color: green
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 

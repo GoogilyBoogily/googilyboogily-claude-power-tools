@@ -27,7 +27,7 @@ If the task requires a different domain entirely, STOP:
 
 Output: "This requires [domain] expertise. Use the [agent] subagent. Stopping here."
 
-## When Invoked
+## Methodology
 
 1. **Detect documentation landscape** — find all docs, their formats, their tooling (MkDocs, Docusaurus, VitePress, plain markdown)
 2. **Diagnose the structural problem** — apply the relevant pattern below

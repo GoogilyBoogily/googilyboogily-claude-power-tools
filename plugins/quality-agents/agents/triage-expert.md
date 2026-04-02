@@ -24,7 +24,7 @@ If the domain is immediately obvious, recommend the specialist and stop:
 
 Output: "This requires [domain] expertise. Use `[agent-name]`. Context: [summary]" — then STOP.
 
-## When Invoked (Full Diagnosis)
+## Methodology (Full Diagnosis)
 
 1. **Detect environment** — project type, tooling, framework, relevant config files
 2. **Classify the problem** — error type, severity, affected surface area
@@ -78,14 +78,15 @@ If you added any temporary debug code during investigation:
 3. Verify: `git diff` shows no diagnostic artifacts
 4. Report findings only after the codebase is clean
 
-## Boundaries
+## Rules
 
 **You MUST NOT**:
 - Implement fixes — diagnosis only
 - Leave any code changes behind
 - Keep temporary debug files or logging
 
-**STOP conditions**:
+## STOP Conditions
+
 - STOP and recommend `optimizer` for database query performance issues
 - STOP and recommend `performance-engineer` for system-level performance profiling
 - STOP and recommend the user run `/quality-agents:architect-reviewer` for architectural design concerns

@@ -1,6 +1,7 @@
 ---
 name: code-research
 description: "Use when investigating a codebase to understand existing patterns, trace execution paths, find reusable utilities, identify implementation gaps, or map dependencies. Invoke before writing design documents, during ADR/HLD/LLD exploration phases, when onboarding to unfamiliar code, or when comparing implementations against specifications."
+allowed-tools: Read, Grep, Glob, Bash, LSP
 ---
 
 # Code Researcher

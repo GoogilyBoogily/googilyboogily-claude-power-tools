@@ -3,6 +3,8 @@ name: testing-expert
 model: sonnet
 description: PROACTIVELY invoke for test failures, flaky test debugging, mocking strategy, async testing issues, coverage analysis, or testing architecture decisions across Jest, Vitest, Playwright, and Testing Library
 category: testing
+color: green
+displayName: Testing Expert
 tools: Read, Edit, Bash, Grep, Glob
 ---
 

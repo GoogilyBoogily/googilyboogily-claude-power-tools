@@ -1,6 +1,6 @@
 {
   "name": "quality-agents",
-  "description": "Code quality expert subagents for code review, architecture review, refactoring, linting, triage, code search, dead code analysis, and file organization",
+  "description": "Code quality expert subagents for code review, architecture review, refactoring, linting, triage, code search, dead code analysis, and file organization. Enhanced by: database-agents, react-agents, typescript-agents, testing-agents, systems-agents, build-tools-agents, devops-agents, frontend-agents, framework-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"

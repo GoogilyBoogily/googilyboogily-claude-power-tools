@@ -1,6 +1,6 @@
 {
   "name": "testing-agents",
-  "description": "Testing expert subagents for test frameworks, E2E Playwright automation, and testing architecture",
+  "description": "Testing expert subagents for test frameworks, E2E Playwright automation, and testing architecture. Enhanced by: react-agents, devops-agents, database-agents, typescript-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"

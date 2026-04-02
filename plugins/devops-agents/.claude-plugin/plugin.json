@@ -1,6 +1,6 @@
 {
   "name": "devops-agents",
-  "description": "DevOps expert subagents for Docker, Git workflows, GitHub Actions, and infrastructure",
+  "description": "DevOps expert subagents for Docker, Git workflows, GitHub Actions, and infrastructure. Enhanced by: quality-agents, build-tools-agents, framework-agents, database-agents, testing-agents",
   "version": "1.0.0",
   "author": {
     "name": "GoogilyBoogily"
