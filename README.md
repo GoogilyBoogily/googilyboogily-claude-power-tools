@@ -6,13 +6,13 @@ A plugin marketplace for [Claude Code](https://claude.ai/claude-code) — 22 gra
 
 Add this marketplace to your Claude Code installation:
 
-```
+```shell
 /plugin marketplace add GoogilyBoogily/googilyboogily-claude-power-tools
 ```
 
 Then install individual plugins:
 
-```
+```shell
 /plugin install git-tools@googilyboogily-claude-power-tools
 /plugin install ai-agents@googilyboogily-claude-power-tools
 /plugin install game-design-bible@googilyboogily-claude-power-tools

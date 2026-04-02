@@ -1,7 +1,7 @@
 {
   "name": "meta-toolkit",
-  "description": "Meta-tools for creating commands, subagents, and generating project-specific toolkits",
-  "version": "1.0.0",
+  "description": "Meta-tools for generating project-specific toolkits, optimized distributed CLAUDE.md hierarchies, and updating READMEs to match current project state",
+  "version": "1.2.0",
   "author": {
     "name": "GoogilyBoogily"
   }
