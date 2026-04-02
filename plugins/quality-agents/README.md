@@ -11,6 +11,7 @@ Code quality expert subagents for Claude Code.
 - **triage-expert** — Initial problem diagnosis, context gathering, error investigation
 - **code-search** — Specialized codebase search for files, functions, and patterns
 - **dead-code-analyst** — Dead code detection and removal analysis
+- **file-organizer** — Directory structure, naming conventions, project layout organization
 
 ## Install
 
