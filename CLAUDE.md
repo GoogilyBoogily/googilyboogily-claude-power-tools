@@ -53,6 +53,17 @@ plugins/
 
 Each plugin has a `.claude-plugin/plugin.json` manifest. Commands live in `commands/` directories, agents in `agents/` directories.
 
+## Sub-CLAUDE.md Index
+
+The following plugins have their own CLAUDE.md with focused guidance. Claude loads these automatically when working in those directories.
+
+| Path | Covers | Consult When |
+|------|--------|--------------|
+| `plugins/game-design-bible/CLAUDE.md` | 6-phase bible pipeline, nested agents, reference skills, bible-to-HLD | Modifying bible pipeline phases, adding game design agents, or debugging phase ordering |
+| `plugins/architecture-docs/CLAUDE.md` | ADR→HLD→LLD pipeline, 1:N:M fan-out, context isolation | Modifying the arch pipeline, adding document types, or debugging fan-out state tracking |
+| `plugins/artifact-toolkit/CLAUDE.md` | Create/audit skill pairs, template system, checklist format | Creating or auditing artifacts, updating templates, or modifying checklist IDs |
+| `plugins/quality-agents/CLAUDE.md` | 8-agent hub-and-spoke routing cluster | Adding quality agents, modifying cross-plugin routing tables, or understanding delegation flow |
+
 ## Authoring Commands
 
 Commands are markdown files in `commands/` directories. The file path becomes the command name: `commands/commit.md` → `/git-tools:commit`.
@@ -130,3 +141,22 @@ Rules of thumb:
 - **Skill** if it's a numbered procedure invoked explicitly with `/skill-name`
 - **Subagent** if it activates autonomously from conversation context or delegates to/from other agents
 - **Command** only for simple single-file cases — prefer skills for new work
+
+## Composite Plugin Patterns
+
+The complex plugins (game-design-bible, architecture-docs, artifact-toolkit) share a common multi-phase architecture:
+
+- **Gather → Generate → Audit cycle**: Each document phase has three skills. Gather runs interactive Q&A + parallel research. Generate reads the context file and produces a document non-interactively. Audit walks through quality checks with interactive resolution.
+- **Context isolation via `context: fork`**: Phase skills run in forked contexts so the orchestrator stays lean. The orchestrator only tracks file paths and verdicts, never document content.
+- **Orchestrator coordination**: Pipeline orchestrators (e.g., `arch-pipeline`, `bible-pipeline`) invoke phase skills sequentially, extract output paths, and present checkpoints between phases. They coordinate but don't generate.
+- **State tracking**: Orchestrators maintain state variables across phases (e.g., `$ADR_PATH`, `$HLD_PATHS[]`). Fan-out pipelines use indexed arrays to track multiple documents.
+- **Skill-to-skill invocation**: Orchestrators chain skills using `skill: "plugin:skill-name", args: "..."` syntax within their procedural instructions.
+
+## Common Gotchas
+
+- **Step 0 is mandatory for agents**: Every agent must include "Step 0: Route or Stay" with explicit delegation targets. Agents without routing tables will handle out-of-scope problems poorly.
+- **Missing agents degrade gracefully**: The routing mesh references agents by name. If a target agent's plugin isn't installed, the delegating agent handles the task locally rather than failing.
+- **Reference skills aren't user commands**: Skills with `user-invocable: false` auto-activate from conversation context. They inject knowledge, not workflows. They don't need `allowed-tools`.
+- **Nested agent directories are discovered recursively**: Agents in subdirectories (e.g., `agents/game-design/systems-designer.md`) are found by the routing mesh. Nesting is organizational, not functional.
+- **Templates and checklists live in `references/`**: Phase skills load supporting files via `${CLAUDE_SKILL_DIR}/references/`. When updating authoring patterns, change the template — individual skills inherit the update.
+- **Audit resolution is interactive, not batch**: Audit skills walk through issues one at a time with fix/skip/research options per issue. They're designed for iterative improvement, not single-pass reporting.

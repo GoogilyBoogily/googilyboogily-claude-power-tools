@@ -1,6 +1,6 @@
 # Claude Code Power Tools
 
-A plugin marketplace for [Claude Code](https://claude.ai/claude-code) — 22 granular plugins with 23 commands, 50 agents, and 7 skills. Install only what you need.
+A plugin marketplace for [Claude Code](https://claude.ai/claude-code) — 24 granular plugins with 15 commands, 49 agents, and 50 skills. Install only what you need.
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ Then install individual plugins:
 
 ## Plugins
 
-### Developer Commands (5 plugins, 16 commands)
+### Developer Commands (5 plugins, 14 commands + 2 skills)
 
 | Plugin | Commands | Description |
 |--------|----------|-------------|
@@ -28,7 +28,7 @@ Then install individual plugins:
 | `checkpoint` | `create`, `list`, `restore` | Lightweight code checkpoints via git stash |
 | `code-quality` | `code-review`, `dead-code`, `validate-and-fix` | Code review and quality enforcement |
 | `dev-utilities` | `cleanup`, `bash-timeout` | Cleanup artifacts and configure timeouts |
-| `meta-toolkit` | `create-command`, `create-subagent`, `generate-toolkit` | Scaffold commands, agents, and project toolkits |
+| `meta-toolkit` | `generate-toolkit` command, `generate-claude-md` + `update-readme` skills | Generate project toolkits, CLAUDE.md hierarchies, and sync READMEs |
 
 ### Research (1 plugin, 1 command + 1 agent)
 
@@ -36,7 +36,7 @@ Then install individual plugins:
 |--------|----------|-------------|
 | `research` | `research` command, research-expert agent | Deep research with parallel subagents, citations, and web fact-finding |
 
-### Expert Agents (14 plugins, 44 agents)
+### Expert Agents (14 plugins, 42 agents)
 
 | Plugin | Agents | Domain | Enhanced by |
 |--------|--------|--------|-------------|
@@ -61,12 +61,18 @@ Then install individual plugins:
 |--------|--------|--------|
 | `game-dev-agents` | game-developer | Game engine architecture, ECS, graphics, physics, multiplayer |
 
-### Documentation Generators (2 plugins, 6 commands + 5 agents + 7 skills)
+### Plugin Authoring (1 plugin, 6 skills)
+
+| Plugin | Skills | Description |
+|--------|--------|-------------|
+| `artifact-toolkit` | `skill-create`, `skill-audit`, `command-create`, `command-audit`, `agent-create`, `agent-audit` | Author and audit Claude Code skills, commands, and agents with quality checklists and best-practice templates |
+
+### Documentation Generators (2 plugins, 5 agents + 42 skills)
 
 | Plugin | Contents | Description |
 |--------|----------|-------------|
-| `game-design-bible` | 6 commands, 5 agents, 1 skill | Create Video Game Design Bibles and generate game-development-aware HLD documents |
-| `architecture-docs` | 5 skills | Interactive ADR, HLD, and LLD pipeline with research |
+| `game-design-bible` | 5 agents, 28 skills | Create Video Game Design Bibles with per-phase gather/generate/audit pipeline and bible-to-HLD generation |
+| `architecture-docs` | 14 skills | ADR, HLD, and LLD pipeline with gather/generate/audit phases, code + web research, and interactive issue resolution |
 
 ## Recommended Bundles
 
@@ -86,11 +92,11 @@ Then install individual plugins:
 `devops-agents`, `git-tools`, `checkpoint`
 
 ### Meta / Plugin Creation
-`meta-toolkit`, `dev-utilities`
+`meta-toolkit`, `artifact-toolkit`, `dev-utilities`
 
 ## How It Works
 
-Each plugin adds slash commands or subagents to your Claude Code environment:
+Each plugin adds slash commands, skills, or subagents to your Claude Code environment:
 
 - **Commands** appear as `/plugin-name:command` (e.g., `/git-tools:commit`, `/code-quality:code-review`)
 - **Skills** appear as `/plugin-name:skill` (e.g., `/architecture-docs:hld`)
