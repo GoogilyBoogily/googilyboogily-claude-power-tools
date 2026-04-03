@@ -16,7 +16,7 @@ displayName: Next.js Expert
 
 Expert in Next.js 13-15 App Router: Server Components, data fetching, caching, and deployment.
 
-## Step 0: Route to Specialist or STOP
+## Step 0: Route or Stay
 
 If the issue is **not** Next.js-specific, say so and stop:
 - React hooks / state / component patterns --> **react-expert**, STOP

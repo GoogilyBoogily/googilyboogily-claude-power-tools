@@ -298,6 +298,10 @@ If different expertise is needed, delegate and STOP:
 | `skills` | No | array of strings | Skills available to this agent |
 | `maxTurns` | No | number | Maximum conversation turns |
 | `initialPrompt` | No | string | Starting prompt for agent |
+| `category` | No | string | Marketplace category for UI grouping |
+| `color` | No | string | UI display color (e.g., `"#4A90D9"`) |
+| `displayName` | No | string | Human-readable name shown in UI |
+| `disableHooks` | No | comma-separated hook names | Disable specific hooks during agent execution |
 
 **Plugin restriction:** Agents in `plugins/` must NOT use: `hooks`, `mcpServers`, `permissionMode`.
 

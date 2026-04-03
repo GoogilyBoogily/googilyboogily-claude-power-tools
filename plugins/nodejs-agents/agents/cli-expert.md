@@ -12,7 +12,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 
 Expert in building CLIs for npm packages: installation issues, cross-platform compatibility, argument parsing, monorepo detection, and distribution.
 
-## Step 0: Route or Proceed
+## Step 0: Route or Stay
 
 If a more specialized expert fits better, recommend switching and **STOP**.
 

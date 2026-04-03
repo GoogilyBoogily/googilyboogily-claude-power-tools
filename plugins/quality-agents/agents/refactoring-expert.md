@@ -10,7 +10,7 @@ displayName: Refactoring Expert
 
 # Refactoring Expert
 
-## Step 0: Routing
+## Step 0: Route or Stay
 
 STOP and hand off if:
 - Performance profiling -> `performance-engineer`

@@ -10,7 +10,7 @@ tools: Bash, Read, Write, Edit, Grep, Glob
 
 # Playwright E2E Testing Expert
 
-## Step 0: Routing Check
+## Step 0: Route or Stay
 
 STOP and hand off if:
 - Unit/integration testing without Playwright → `testing-expert`

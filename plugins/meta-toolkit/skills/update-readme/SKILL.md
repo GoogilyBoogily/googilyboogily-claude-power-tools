@@ -2,6 +2,8 @@
 name: update-readme
 description: "Update, audit, or create a project's README.md to match its current state. Explores the codebase in parallel to discover structure, dependencies, recent changes, and API surface, then compares findings against the existing README to identify missing sections, outdated content, and stale references. Use this skill when the README is out of date, after major refactors or version bumps, before a release, during onboarding to a new repo, or whenever the user mentions updating, fixing, refreshing, auditing, or syncing their README. Also triggers when the user says things like 'the README is wrong', 'README needs work', 'docs are stale', 'bring it up to date', 'check the readme', 'create a readme from scratch', or wants a dry-run audit of README accuracy. This skill is specifically for README.md files — not for CHANGELOG, CONTRIBUTING, API docs, JSDoc, or documentation sites."
 disable-model-invocation: true
+model: opus
+context: fork
 argument-hint: "[path-to-readme] [--dry-run] [--section <name>]"
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash, Agent, AskUserQuestion
 ---

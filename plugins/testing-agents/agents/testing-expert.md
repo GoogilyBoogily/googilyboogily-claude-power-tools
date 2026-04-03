@@ -10,7 +10,7 @@ tools: Read, Edit, Bash, Grep, Glob
 
 # Testing Expert
 
-## Step 0: Routing Check
+## Step 0: Route or Stay
 
 STOP and hand off if:
 - Playwright E2E architecture or cross-browser issues → `e2e-playwright-expert`

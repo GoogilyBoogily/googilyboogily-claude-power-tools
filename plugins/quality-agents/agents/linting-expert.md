@@ -10,7 +10,7 @@ tools: Read, Edit, Bash, Grep, Glob
 
 # Linting Expert
 
-## Step 0: Routing Check
+## Step 0: Route or Stay
 
 STOP and hand off if:
 - TypeScript type errors or strict mode migration → `typescript-expert`
