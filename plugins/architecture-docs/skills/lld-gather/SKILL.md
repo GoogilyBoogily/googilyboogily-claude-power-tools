@@ -1,27 +1,28 @@
 ---
 name: lld-gather
-description: "Gather context and requirements for a Low Level Design document. Interactive Q&A session that explores the codebase, researches online, and compiles a structured context file for the LLD generator. Use after an HLD is stable and ready for implementation detail."
+description: "Compile a structured context file for LLD generation by merging decisions (from lld-discuss), research (from arch-research), and HLD constraints with gap-fill questions. Can also run standalone with direct Q&A when no decisions file exists."
+version: 3.0.0
 context: fork
-argument-hint: "[description] [--hld path-to-hld]"
+argument-hint: "[decisions-file-path] [--hld path-to-hld] [--research path-to-research]"
 allowed-tools: Read, Glob, Grep, Skill, Task, AskUserQuestion, WebSearch, WebFetch
 model: opus
 ---
 
-# LLD Context Gathering
+# LLD Context Gathering — Compiler Mode
 
-Gather all context needed to write a Low Level Design document. This skill reads the HLD, asks implementation-level questions, explores the codebase for reusable utilities and real interfaces, researches online, and compiles everything into a structured context file that the `lld-generate` skill consumes.
+Compile all context needed to write a Low Level Design document. In the full pipeline, this skill receives a decisions file (from `lld-discuss`), a research file (from `arch-research`), and an HLD reference, then merges them with gap-fill questions to produce the final context file.
+
+**Can also run standalone** — if no decisions file is provided, falls back to direct Q&A mode.
 
 ## Input
 
-$ARGUMENTS — a description or path to an HLD, and optionally `--hld <path>` to explicitly reference the predecessor HLD.
+$ARGUMENTS — path to a decisions file or HLD, and optionally flags.
 
-If no HLD path is provided, ask which HLD to drill into.
-
-## Parse Arguments
-
-Extract from `$ARGUMENTS`:
-- **Description**: The non-flag text
-- **HLD Path**: `--hld <path>` or the first argument if it looks like a file path
+Parse for:
+- **Decisions path** — `docs/context/lld/<name>-decisions.md`
+- **HLD path** — `--hld <path>` or first arg if it looks like an HLD file path
+- **Research path** — `--research <path>`
+- **Description** — if no files, treated as topic for standalone mode
 
 ## Source Integrity Rules
 
@@ -29,90 +30,59 @@ Extract from `$ARGUMENTS`:
 
 1. **Cite your work.** Reference specific file paths + line numbers.
 2. **Never reference prior Claude sessions or Claude memory.**
-3. **Assumptions are labeled, not hidden.** Unresearched claims go in Open Questions.
+3. **Assumptions are labeled, not hidden.**
 
 ## Process
 
 **Human-in-the-loop: Never proceed past a decision point without user approval.**
 
-### Phase 1: Absorb the HLD
+### Mode Detection
 
-Read the HLD document. Extract and internalize:
-- Problem, approach, and architecture
-- Component boundaries and responsibilities
-- Key design decisions and their rationale
-- Codebase impact (files to modify/create/delete)
-- Implementation phases
-- Open questions and assumptions
+Check if `$ARGUMENTS` points to a decisions file:
+- If YES → **Compiler Mode** (Phase 1-4)
+- If NO → **Standalone Mode** (Phase S1-S5)
 
-**CHECKPOINT — Confirm HLD Understanding:**
-Present a summary covering:
-- The approach and architecture
-- Component boundaries and responsibilities
-- Key design decisions
-- Open questions carried forward
+---
 
-Ask: "Is my understanding of the HLD correct? Anything I'm misreading before I proceed?"
+## Compiler Mode
 
-### Phase 2: Gap Analysis Questions
+### Phase 1: Load Inputs
 
-Identify implementation-level ambiguities the HLD intentionally left unresolved. Batch questions using AskUserQuestion. Focus on gaps where the answer materially changes implementation.
+1. Read the decisions file. Extract all D-XX decisions, HLD Constraints, Existing Code Patterns, Deferred Ideas, Open Questions.
+2. If `--hld` provided, read the HLD. Extract:
+   - Component boundaries and responsibilities
+   - API contracts and data models
+   - Key design decisions and rationale
+   - Implementation phases and dependencies
+3. If `--research` provided, read the RESEARCH.md. If not, check for `<name>-RESEARCH.md`.
+4. Scan `docs/lld/` for existing LLDs.
 
-**Question areas:**
+### Phase 2: Gap-Fill Questions
 
-1. **Error Handling & Edge Cases** — What happens when X fails? What are the error codes? How are errors surfaced to users?
-2. **State & Concurrency** — What state transitions exist? Are there race conditions to handle? Locking strategy?
-3. **Data Contracts** — Exact types, nullability, defaults, validation rules for interfaces between components.
-4. **Integration Details** — Timeouts, retries, circuit breakers, rate limits for external dependencies.
-5. **Performance Constraints** — Hot paths to optimize, size limits, batching strategies, caching decisions.
-6. **Testing Strategy** — What test patterns to follow? What fixtures/mocks are needed? Integration test infrastructure requirements?
+Compare decisions + research + HLD against LLD context needs:
 
-If the user says "use your judgment," make a reasonable decision but note it as an assumption.
+| Required Section | Source | Gap-Fill Needed? |
+|-----------------|--------|-----------------|
+| Error Handling & Edge Cases | Decisions file (D-XX on error handling) | Ask for specific error codes if missing |
+| State & Concurrency | Decisions file | Ask if stateful and not covered |
+| Data Contracts | Decisions + HLD API contracts | Ask for exact types if missing |
+| Integration Details | Decisions + HLD external systems | Ask for timeouts/retries if missing |
+| Performance Constraints | Decisions | Ask for specific numbers if missing |
+| Testing Strategy | Decisions (D-XX on testing) | Ask if approach unclear |
 
-### Phase 3: Codebase Exploration
+**Only ask about genuine gaps.** Present compilation plan:
 
-Dispatch two parallel Tasks in a single message:
+> "I have implementation decisions, research, and HLD context. Here's what I'll compile. Any gaps?"
 
-**Task 1 — Code Research:**
-```
-Invoke /architecture-docs:code-research focused on:
-- Validate that interfaces assumed in the HLD actually exist
-- Find reusable utilities (error handling, validation, logging patterns)
-- Trace a similar flow end-to-end as a reference implementation
-- Check for conflicts with in-progress work
-- Identify existing test patterns and fixtures
-```
-
-**Task 2 — Web Research:**
-```
-Invoke /architecture-docs:web-research focused on:
-- Implementation patterns for the specific technologies involved
-- Library/SDK API details for external dependencies
-- Known gotchas and edge cases in similar implementations
-```
-
-After both return, review and filter findings.
-
-**CHECKPOINT — Present Exploration Findings:**
-Present findings:
-- HLD assumptions validated against codebase reality
-- Discrepancies between HLD and actual codebase
-- Reusable utilities and patterns discovered
-- Reference implementations traced
-- Conflicts with in-progress work
-
-Ask: "Any discrepancies concern you? Should I investigate any area more deeply?"
-
-### Phase 4: Compile Context File
-
-Assemble all gathered information:
+### Phase 3: Compile Context File
 
 ```markdown
 # LLD Context: [Feature/Change Title]
 
 **Gathered:** [today's date]
 **HLD Reference:** [path to HLD]
-**Description:** [what is being detailed]
+**Decisions file:** [path]
+**Research file:** [path, if used]
 
 ## HLD Summary
 
@@ -124,76 +94,130 @@ Assemble all gathered information:
 |-----------|----------|---------------|
 | [name] | [path] | [one sentence] |
 
-### Key Design Decisions
+### Key Design Decisions (from HLD)
 - [decision 1] — [rationale]
 - [decision 2] — [rationale]
 
 ### Implementation Phases (from HLD)
 | Phase | Scope | Depends On | Deliverable |
 |-------|-------|------------|-------------|
-| 1 | [scope] | — | [deliverable] |
+
+## Implementation Decisions
+
+[Preserved from decisions file — D-XX numbering intact]
+
+### [Category]
+- **D-01:** [decision] (User Decision)
+  - Rationale: [rationale]
+  - Code context: [file:line]
+  - Follows/diverges: [consistency with existing patterns]
+  - Testing: [test approach]
+
+### Claude's Discretion
+- **D-03:** [area] — following existing patterns
+
+## Existing Code Patterns
+
+[From decisions file — patterns that inform implementation]
+- Error handling: [pattern] (file:line)
+- State management: [pattern] (file:line)
+- Testing: [pattern] (file:line)
 
 ## User Answers
 
-### Error Handling & Edge Cases
-[User's answers]
+[Gap-fill answers — only sections where gaps existed]
 
-### State & Concurrency
-[User's answers]
+## Research Summary
 
-### Data Contracts
-[User's answers]
+### Decision Impact Analysis
+[From RESEARCH.md]
 
-### Integration Details
-[User's answers]
+### Approach Comparison
+[Preserved as table]
 
-### Performance Constraints
-[User's answers]
+### Don't Hand-Roll
+[Preserved as table]
 
-### Testing Strategy
-[User's answers]
+| Problem | Don't Build | Use Instead | Why |
+|---------|------------|-------------|-----|
 
-## Codebase Findings
+### Codebase Findings
+[With file:line citations]
 
-### Validated HLD Assumptions
+| Pattern | Location (file:line) | Reusable? | Adaptation Needed |
+|---------|---------------------|-----------|-------------------|
+
+### Gap Analysis
+
+| Expected | Actual | Severity | Impact |
+|----------|--------|----------|--------|
+
+### Common Pitfalls
+
+| Pitfall | What Goes Wrong | How to Avoid |
+|---------|----------------|--------------|
+
+## Validated HLD Assumptions
 - [assumption] — ✅ Confirmed at [path:line]
 - [assumption] — ❌ Discrepancy: [what's actually there]
 
-### Reusable Utilities
+## Reusable Utilities
 | Utility | Location | Purpose |
 |---------|----------|---------|
 | [name] | [path:line] | [what it does] |
 
-### Reference Implementation
-[Path to similar flow traced end-to-end, with key file:line markers]
-
-### Existing Test Patterns
+## Existing Test Patterns
 - Test framework: [framework] at [config path]
 - Fixture pattern: [description] at [path]
 - Mock pattern: [description] at [path]
 
-### Conflicts with In-Progress Work
-- [conflict description, if any]
+## Deferred Ideas
 
-## Web Research Findings
-
-[Structured findings with URLs]
+[From decisions file]
 
 ## Open Questions
 
-- [Anything unresolved or marked as assumptions]
+[Merged from decisions + research + gap-fill]
 
 ## Template
 
 The LLD must follow the template at `${CLAUDE_SKILL_DIR}/../lld-generate/references/template.md`.
-Key sections: Scope, Component Breakdown (public API tables, internal methods, dependencies), Sequence Diagrams (happy + error paths), User Flow Diagrams, State Management (state machine + transition table), Error Handling (error catalog + retry strategy), Data Transformations, Interface Contracts, Design Patterns, File-Level Implementation Plan, Testing Specifications, Assumptions and Open Items.
+Key sections: Scope, Component Breakdown (public API tables, internal methods, dependencies), Sequence Diagrams, User Flow Diagrams, State Management, Error Handling (error catalog + retry strategy), Data Transformations, Interface Contracts, Design Patterns, File-Level Implementation Plan, Testing Specifications, Assumptions and Open Items.
 ```
 
-### Phase 5: Save and Return
+### Phase 4: Save and Return
 
-1. Determine the kebab-case name from the feature/change title.
-2. Create the directory if needed: `docs/context/lld/`
-3. Write the context file to `docs/context/lld/<name>-context.md`
-4. Return the context file path.
+1. Determine kebab-case name.
+2. Create `docs/context/lld/` if needed.
+3. Write to `docs/context/lld/<name>-context.md`
+4. Tell user: "Context file saved to `<path>`. Run `/architecture-docs:lld-generate <path>` to generate the LLD."
 
-Tell the user: "Context file saved to `<path>`. Review and edit it if needed, then run `/architecture-docs:lld-generate <path>` (with optional `--hld <hld-path>`) to generate the LLD."
+---
+
+## Standalone Mode
+
+Falls back to direct interactive gathering when no decisions file is provided.
+
+### Phase S1: Absorb the HLD
+
+Read the HLD. Extract architecture, components, decisions, phases.
+
+**CHECKPOINT** — Confirm understanding.
+
+### Phase S2: Gap Analysis Questions
+
+Question areas: Error Handling, State & Concurrency, Data Contracts, Integration Details, Performance, Testing Strategy.
+
+### Phase S3: Codebase Exploration
+
+Dispatch parallel code + web research Tasks.
+
+**CHECKPOINT** — Present findings with HLD assumption validation.
+
+### Phase S4: Compile Context File
+
+Same template as Compiler Mode Phase 3, but without D-XX numbering.
+
+### Phase S5: Save and Return
+
+Same as Compiler Mode Phase 4.

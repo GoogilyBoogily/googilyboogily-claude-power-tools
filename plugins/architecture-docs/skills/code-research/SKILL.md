@@ -1,6 +1,7 @@
 ---
 name: code-research
 description: "Use when investigating a codebase to understand existing patterns, trace execution paths, find reusable utilities, identify implementation gaps, or map dependencies. Invoke before writing design documents, during ADR/HLD/LLD exploration phases, when onboarding to unfamiliar code, or when comparing implementations against specifications."
+version: 2.0.0
 allowed-tools: Read, Grep, Glob, Bash, LSP
 ---
 
@@ -48,7 +49,7 @@ Execute systematically using this tool hierarchy:
 
 ### Phase 3: Compile
 
-Produce a structured report in this exact format:
+Produce a structured report using tables for scannable, decision-ready output:
 
 ```markdown
 # Code Research: {topic}
@@ -68,14 +69,33 @@ Produce a structured report in this exact format:
 
 {...more findings as needed}
 
-## Gaps Identified
-- **{gap title}:** {evidence for why it's missing — e.g., "no test coverage for X", "no handler for error code Y"}
+## Existing Patterns
 
-## Patterns Discovered
-- **{pattern name}:** {where it's used, how to reuse it}
+| Pattern | Location (file:line) | How It Works | Relevance |
+|---------|---------------------|-------------|-----------|
+| {name} | `{path}:{line}` | {brief description} | {why it matters for the research question} |
+
+## Reusable Assets
+
+| Asset | Location (file:line) | Reusable? | Adaptation Needed |
+|-------|---------------------|-----------|-------------------|
+| {utility/class/module} | `{path}:{line}` | {yes/no/partial} | {what needs to change, if anything} |
+
+## Gap Analysis
+
+| Expected | Actual | Severity | Impact |
+|----------|--------|----------|--------|
+| {what should exist based on question} | {what was found or "missing"} | {🔴 blocking / 🟡 warning / 🔵 info} | {design implication} |
 
 ## Open Questions
 - **{question}:** {what further research would answer it}
+
+## Source Confidence
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| {finding} | Verified | Direct file:line observation |
+| {finding} | Inferred | Pattern-based reasoning from {evidence} |
 ```
 
 ### Phase 4: Present

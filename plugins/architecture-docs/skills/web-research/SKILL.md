@@ -1,6 +1,7 @@
 ---
 name: web-research
 description: "Use when external knowledge is needed — SDK documentation, API references, best practices, GitHub issues, Stack Overflow solutions, competitor implementations, blog posts, RFCs, or technical standards — to inform design decisions, fill knowledge gaps, or validate architectural approaches."
+version: 2.0.0
 allowed-tools: WebSearch, WebFetch, Read, Write, Grep, Glob
 ---
 
@@ -74,7 +75,7 @@ Before compiling the report:
 
 ### Phase 4: Compile
 
-Produce a structured report in this exact format:
+Produce a structured report using tables for scannable, decision-ready output:
 
 ```markdown
 # Web Research: {topic}
@@ -96,6 +97,27 @@ Produce a structured report in this exact format:
 
 {...more findings as needed}
 
+## Approach Comparison
+
+| Approach | Pros | Cons | When to Use | Adoption Level |
+|----------|------|------|-------------|---------------|
+| {approach A} | {pros} | {cons} | {scenarios} | {widespread/growing/niche/declining} |
+| {approach B} | {pros} | {cons} | {scenarios} | {level} |
+
+## Don't Hand-Roll
+
+{Things that look simple enough to build but have hidden complexity}
+
+| Problem | Don't Build | Use Instead | Why |
+|---------|------------|-------------|-----|
+| {problem} | {naive approach} | {proven solution/library} | {hidden complexity that bites you} |
+
+## Common Pitfalls
+
+| Pitfall | What Goes Wrong | How to Avoid | Source |
+|---------|----------------|--------------|--------|
+| {pitfall name} | {failure mode} | {prevention strategy} | {URL} |
+
 ## Cross-References
 - {finding} confirmed by {N sources}: {urls}
 - {finding} contradicted: {source A says X, source B says Y}
@@ -103,9 +125,16 @@ Produce a structured report in this exact format:
 ## Gaps
 - {what couldn't be found or needs codebase verification}
 
-## Sources Consulted
-1. {title} — {url} — {reliability rating}
-2. {title} — {url} — {reliability rating}
+## Sources
+
+### Primary (official docs, high confidence)
+1. {title} — {url}
+
+### Secondary (maintained repos, medium confidence)
+1. {title} — {url}
+
+### Tertiary (blogs, forums, lower confidence)
+1. {title} — {url} — {publication date}
 ```
 
 ### Phase 5: Present

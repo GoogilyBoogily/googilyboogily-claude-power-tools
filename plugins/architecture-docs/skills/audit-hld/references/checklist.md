@@ -67,6 +67,15 @@
 | CF-5 | Codebase findings are incorporated | 🟡 WARNING | Relevant findings from context's code research appear in HLD |
 | CF-6 | No significant context dropped | 🔵 INFO | Check if major user answers or research findings are missing |
 
+## Decision Coverage (requires --context flag with D-XX decisions)
+
+| # | Check | Severity | How to Verify |
+|---|-------|----------|---------------|
+| DC-1 | Every User Decision D-XX is addressed in the HLD | 🔴 CRITICAL | Build coverage matrix: for each D-XX marked "(User Decision)" in context file, identify which HLD section(s) address it. Every User Decision must map to at least one section (Architecture, API Design, Key Design Decisions, etc.). |
+| DC-2 | No User Decision is reduced in scope | 🔴 CRITICAL | Scan for weakening language applied to User Decisions: "placeholder", "v1", "simplified", "for now", "basic version", "static for now". Claude's Discretion items may use these. |
+| DC-3 | Claude's Discretion items are reasonably addressed | 🔵 INFO | D-XX items marked "Claude's Discretion" should be addressed where relevant, but gaps are acceptable |
+| DC-4 | Deferred Ideas are NOT implemented | 🟡 WARNING | Items in the context file's "Deferred Ideas" section should NOT appear as features or architecture in the HLD |
+
 ## Open Questions
 
 | # | Check | Severity | How to Verify |

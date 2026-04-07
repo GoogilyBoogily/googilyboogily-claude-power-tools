@@ -1,8 +1,11 @@
 {
   "name": "architecture-docs",
-  "description": "ADR → HLD → LLD pipeline with gather/generate/audit phases, context isolation, parallel code + web research, and interactive issue resolution",
-  "version": "2.0.0",
+  "description": "ADR, HLD, and LLD pipeline with discuss → research → gather → generate → audit phases, D-XX decision tracking, context isolation, parallel code and web research, interactive issue resolution, goal-backward verification, and cross-session state persistence",
+  "version": "3.1.0",
   "author": {
-    "name": "GoogilyBoogily"
-  }
+    "name": "Braintree Web SDK Team",
+    "email": "bt-web-sdk@paypal.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["architecture", "adr", "hld", "lld", "design-docs", "documentation", "gray-areas", "decision-tracking"]
 }

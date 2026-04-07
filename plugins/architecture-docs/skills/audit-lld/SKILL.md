@@ -1,6 +1,7 @@
 ---
 name: audit-lld
 description: "Audit a Low Level Design document for template compliance, source integrity, HLD alignment, implementation readiness, and context fidelity. Walks through each issue interactively with resolution options including parallel code + web research."
+version: 2.0.0
 context: fork
 argument-hint: "[lld-path] [--context path] [--hld path]"
 allowed-tools: Read, Glob, Grep, Write, Edit, Task, AskUserQuestion, WebSearch, WebFetch

@@ -1,6 +1,7 @@
 ---
 name: hld-generate
 description: "Generate a High Level Design document from a gathered context file. Runs with clean context — reads the context file and produces a complete HLD. Non-interactive."
+version: 2.0.0
 context: fork
 argument-hint: "[context-file] [--adr path-to-adr]"
 allowed-tools: Read, Write, Edit, Glob, Grep
@@ -107,7 +108,25 @@ If `--adr` was provided:
 2. Add a forward reference in its "More Information" section (create the section if needed):
    > See [HLD: {title}]({relative-path-to-hld}) for implementation design.
 
-### Step 5: Save
+### Step 5: Decision Coverage Verification
+
+Before saving, verify that every D-XX decision from the context file is addressed in the HLD.
+
+**Build an internal coverage matrix (do NOT include in the output document):**
+
+| Decision | Section(s) Addressing It | Coverage |
+|----------|-------------------------|----------|
+| D-01 | Key Design Decisions, §3.1 Architecture | Full |
+| D-02 | API Design, §3.4 | Full |
+| D-03 | — | MISSING |
+
+**Rules:**
+- Every **User Decision** D-XX MUST map to at least one section → if MISSING, add content to address it before saving
+- **Claude's Discretion** D-XX should be addressed where relevant, but gaps are acceptable
+- **Scope reduction prevention:** If a User Decision is addressed but with weakened language ("placeholder", "v1", "simplified", "for now", "basic version", "static for now"), strengthen it to match the decision's full intent
+- If the context file has no D-XX decisions (standalone mode), skip this step
+
+### Step 6: Save
 
 1. Write the complete HLD using the Write tool in a single call with the full document.
 2. Re-read the saved file to verify it follows the template.

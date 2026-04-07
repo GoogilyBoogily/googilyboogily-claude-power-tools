@@ -53,6 +53,15 @@
 | CF-4 | Codebase findings are incorporated | 🟡 WARNING | Relevant codebase findings from context should appear as evidence in the ADR |
 | CF-5 | No context file content was dropped without reason | 🔵 INFO | Check if significant user answers or research findings are missing from the ADR |
 
+## Decision Coverage (requires --context flag with D-XX decisions)
+
+| # | Check | Severity | How to Verify |
+|---|-------|----------|---------------|
+| DC-1 | Every User Decision D-XX is addressed in the ADR | 🔴 CRITICAL | Build coverage matrix: for each D-XX marked "(User Decision)" in context file, identify which ADR section(s) address it. Every User Decision must map to at least one section. |
+| DC-2 | No User Decision is reduced in scope | 🔴 CRITICAL | Scan for weakening language applied to User Decisions: "placeholder", "v1", "simplified", "for now", "basic version", "static for now". Claude's Discretion items may use these. |
+| DC-3 | Claude's Discretion items are reasonably addressed | 🔵 INFO | D-XX items marked "Claude's Discretion" should be addressed where relevant, but gaps are acceptable |
+| DC-4 | Deferred Ideas are NOT implemented | 🟡 WARNING | Items in the context file's "Deferred Ideas" section should NOT appear as features or decisions in the ADR |
+
 ## Open Questions
 
 | # | Check | Severity | How to Verify |

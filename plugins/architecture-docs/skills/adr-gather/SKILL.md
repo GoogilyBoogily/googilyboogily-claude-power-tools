@@ -1,21 +1,27 @@
 ---
 name: adr-gather
-description: "Gather context and requirements for an Architecture Decision Record. Interactive Q&A session that explores the codebase, researches online, and compiles a structured context file for the ADR generator. Use when starting a new architectural decision."
+description: "Compile a structured context file for ADR generation by merging decisions (from adr-discuss) and research (from arch-research) with any remaining gap-fill questions. Can also run standalone with direct Q&A when no decisions file exists."
+version: 3.0.0
 context: fork
-argument-hint: "[decision topic]"
+argument-hint: "[decisions-file-path] [--research path-to-research]"
 allowed-tools: Read, Glob, Grep, Skill, Task, AskUserQuestion, WebSearch, WebFetch
 model: opus
 ---
 
-# ADR Context Gathering
+# ADR Context Gathering — Compiler Mode
 
-Gather all context needed to write an Architecture Decision Record. This skill asks clarifying questions, explores the codebase, researches online, and compiles everything into a structured context file that the `adr-generate` skill consumes.
+Compile all context needed to write an Architecture Decision Record. In the full pipeline, this skill receives a decisions file (from `adr-discuss`) and a research file (from `arch-research`), merges them, fills any gaps with targeted questions, and produces the final context file that `adr-generate` consumes.
+
+**Can also run standalone** — if no decisions file is provided, falls back to direct Q&A mode (compatible with v2 behavior).
 
 ## Input
 
-$ARGUMENTS — the decision topic (e.g., "migrate from REST to GraphQL").
+$ARGUMENTS — path to a decisions file, and optionally `--research <path>` for the research file.
 
-If no topic is provided, ask the user what architectural decision needs to be recorded.
+Parse for:
+- **Decisions path** — `docs/context/decisions/<name>-decisions.md` (first positional arg or detected from path)
+- **Research path** — `--research <path>` pointing to the RESEARCH.md file
+- **Topic** — if no files provided, treated as a topic string for standalone mode
 
 ## Source Integrity Rules
 
@@ -29,90 +35,99 @@ If no topic is provided, ask the user what architectural decision needs to be re
 
 **Human-in-the-loop: Never proceed past a decision point without user approval.**
 
-### Phase 1: Understand the Decision
+### Mode Detection
 
-1. If no topic provided, ask what decision needs to be recorded.
-2. Establish the decision's scope: is this a new decision, or does it supersede an existing ADR?
-3. Scan `docs/decisions/` for existing ADRs to understand the landscape and detect if this supersedes one.
+Check if `$ARGUMENTS` points to a decisions file:
+- If YES → **Compiler Mode** (Phase 1-4 below)
+- If NO → **Standalone Mode** (Phase S1-S5 below)
 
-**CHECKPOINT — Confirm Decision Scope:**
-Present what you found:
-- Existing ADRs and how they relate to this decision
-- Whether this supersedes an existing ADR
-- Initial understanding of the decision
+---
 
-Ask: "Does this match your understanding? Anything else I should know about the context before I start asking detailed questions?"
+## Compiler Mode (with decisions + optional research)
 
-### Phase 2: Clarifying Questions
+### Phase 1: Load Inputs
 
-Ask clarifying questions using AskUserQuestion. Batch related questions together. Focus on areas where the answer materially changes the ADR content.
+1. Read the decisions file. Extract:
+   - All D-XX decisions (User Decisions + Claude's Discretion)
+   - Prior Constraints
+   - Deferred Ideas
+   - Open Questions
 
-**Question areas (present which are relevant FIRST, then ask):**
+2. If `--research` provided, read the research file. Extract:
+   - Decision Impact Analysis
+   - Approach Comparison tables
+   - Don't Hand-Roll warnings
+   - Common Pitfalls
+   - Gap Analysis
 
-1. **Problem Statement** — What is the specific problem or need driving this decision? (2-3 sentences)
-2. **Decision Drivers** — What forces or concerns are influencing this decision? Suggest 3-5 based on context; ask user to confirm, add, or remove.
-3. **Considered Options** — What options has the user already considered? Brainstorm additional options: "do nothing"/status quo, buy vs build, hybrid approaches, unconventional solutions. Push for at least 3 options.
-4. **Decision Outcome** — Has a decision already been made? If so, which option and why? If not, note this as TBD.
-5. **Stakeholders** — Who are the decision-makers, consulted SMEs, and informed stakeholders?
-6. **Consequences & Confirmation** — What are the expected positive outcomes, accepted tradeoffs, and risks? How will correct implementation be confirmed?
-7. **Additional Context** — Related ADRs/issues/documents, team agreements, revisit timeline.
+3. If no research file provided, check for one at the same location with `-RESEARCH.md` suffix. If found, ask whether to include it.
 
-For each option the user lists, ask for 2-4 pros and 1-3 cons. Ensure each option has at least one Good and one Bad point.
+4. Scan `docs/decisions/` for existing ADRs — needed for numbering and cross-referencing.
 
-### Phase 3: Research
+### Phase 2: Gap-Fill Questions
 
-Dispatch two parallel Tasks in a single message:
+Compare the decisions + research against what an ADR context file needs:
 
-**Task 1 — Code Research:**
-```
-Use the Skill tool to invoke /architecture-docs:code-research with a question derived from the decision topic.
-Focus on: existing patterns related to the decision, current implementation state, dependencies, conventions.
-```
+| Required Section | Source | Gap-Fill Needed? |
+|-----------------|--------|-----------------|
+| Problem Statement | Decisions file (topic + D-XX context) | Only if not clear from decisions |
+| Decision Drivers | Decisions file (rationale fields) | Only if rationale is thin |
+| Considered Options | Decisions file (D-XX alternatives) + Research (Approach Comparison) | Usually covered — check for at least 3 options |
+| Decision Outcome | Decisions file (D-XX User Decisions) | Should be present — flag if missing |
+| Stakeholders | Not typically in decisions file | Ask if not mentioned |
+| Consequences & Confirmation | Decisions file (affects fields) + Research (pitfalls, don't hand-roll) | Compile from both; ask only about gaps |
+| Additional Context | Decisions file (Prior Constraints, Deferred Ideas) | Usually covered |
 
-**Task 2 — Web Research:**
-```
-Use the Skill tool to invoke /architecture-docs:web-research with a question derived from the decision topic.
-Focus on: best practices, common approaches, known pitfalls, relevant standards or RFCs.
-```
+**Only ask about genuine gaps.** If the decisions + research cover a section, don't re-ask. Present what you plan to compile and ask:
 
-After both return, review findings for relevance. Discard noise; keep only findings that inform the ADR.
+> "I have enough to compile the context file. Here are the sections I'll pull from your decisions and research. Any gaps I should fill?"
 
-**CHECKPOINT — Present Research Findings:**
-Present a summary of both code and web research findings.
+List the sections with their source. If gaps exist, ask targeted questions using AskUserQuestion.
 
-Ask: "Here's what I found from researching the codebase and the web. Does this align with what you know? Should I dig deeper into any area?"
+### Phase 3: Compile Context File
 
-### Phase 4: Compile Context File
-
-Assemble all gathered information into a structured context file:
+Assemble into the final context file, preserving D-XX numbering and research tables:
 
 ```markdown
 # ADR Context: [Decision Topic]
 
 **Gathered:** [today's date]
 **Topic:** [decision topic]
+**Decisions file:** [path]
+**Research file:** [path, if used]
 
 ## Problem Statement
 
-[User's problem statement from Phase 2]
+[Compiled from decisions topic + user context]
 
 ## Decision Drivers
 
-- [driver 1]
-- [driver 2]
+- [driver 1 — from decisions rationale]
+- [driver 2 — from research findings]
 - ...
+
+## Implementation Decisions
+
+[Preserved exactly from decisions file — D-XX numbering intact]
+
+### [Category]
+- **D-01:** [decision] (User Decision)
+  - Rationale: [rationale]
+  - Code context: [file:line]
+
+### Claude's Discretion
+- **D-03:** [area]
 
 ## Considered Options
 
 ### Option 1: [title]
-[Description if provided]
+[Description — enriched by research Approach Comparison table]
 
 #### Good
-- [pro 1]
-- [pro 2]
+- [pro — from decisions + research]
 
 #### Bad
-- [con 1]
+- [con — from decisions + research pitfalls]
 
 ### Option 2: [title]
 ...
@@ -122,8 +137,7 @@ Assemble all gathered information into a structured context file:
 
 ## Decision Outcome
 
-[If already decided: which option and why]
-[If TBD: "Decision pending — to be determined during ADR generation"]
+[From D-XX User Decisions — the chosen approach and why]
 
 ## Stakeholders
 
@@ -134,34 +148,54 @@ Assemble all gathered information into a structured context file:
 ## Consequences & Confirmation
 
 ### Expected Positive Outcomes
-- [outcome 1]
+- [from decisions affects fields + research confirmations]
 
 ### Accepted Tradeoffs
-- [tradeoff 1]
+- [from decisions + research cautions]
+
+### Don't Hand-Roll Warnings
+[From research — preserved as table]
+
+| Problem | Don't Build | Use Instead | Why |
+|---------|------------|-------------|-----|
+
+### Common Pitfalls
+[From research — preserved as table]
+
+| Pitfall | What Goes Wrong | How to Avoid |
+|---------|----------------|--------------|
 
 ### Confirmation Strategy
 [How implementation correctness will be verified]
 
+## Research Summary
+
+### Decision Impact Analysis
+[From RESEARCH.md — how research informed each decision]
+
+### Codebase Findings
+[From RESEARCH.md Existing Codebase Patterns — with file:line citations]
+
+### Web Research Findings
+[From RESEARCH.md sources — with URLs and confidence tiers]
+
+### Gap Analysis
+[From RESEARCH.md — preserved as table]
+
+| Expected | Actual | Severity | Impact |
+|----------|--------|----------|--------|
+
 ## Existing ADRs
 
-[List of related existing ADRs with paths and brief descriptions]
-[If superseding: "Supersedes: ADR-NNNN at [path]"]
+[List of related existing ADRs with paths — from Phase 1 scan]
 
-## Codebase Findings
+## Deferred Ideas
 
-[Structured findings from code-research, with file:line citations]
-
-## Web Research Findings
-
-[Structured findings from web-research, with URLs]
-
-## Additional Context
-
-[Related issues, documents, team agreements, revisit timeline]
+[From decisions file — captured but NOT in scope]
 
 ## Open Questions
 
-- [Anything unresolved or marked as assumptions]
+[Merged from decisions file + research Remaining Unknowns + any gap-fill gaps]
 
 ## Template
 
@@ -178,7 +212,7 @@ The ADR must follow the MADR 4.0.0 template exactly. The template structure is:
 Optional sections marked with `<!-- This is an optional element. Feel free to remove. -->` should be INCLUDED by default unless the user explicitly says to skip them.
 ```
 
-### Phase 5: Save and Return
+### Phase 4: Save and Return
 
 1. Determine the kebab-case name from the decision topic.
 2. Create the context directory if needed: `docs/context/decisions/`
@@ -186,3 +220,50 @@ Optional sections marked with `<!-- This is an optional element. Feel free to re
 4. Return the context file path to the caller.
 
 Tell the user: "Context file saved to `<path>`. Review and edit it if needed, then run `/architecture-docs:adr-generate <path>` to generate the ADR."
+
+---
+
+## Standalone Mode (no decisions file — backward-compatible)
+
+When no decisions file is provided, fall back to interactive gathering.
+
+### Phase S1: Understand the Decision
+
+1. If no topic provided, ask what decision needs to be recorded.
+2. Establish scope: new decision or superseding an existing ADR?
+3. Scan `docs/decisions/` for existing ADRs.
+
+**CHECKPOINT — Confirm Decision Scope:**
+Present existing ADRs and initial understanding. Ask: "Does this match your understanding?"
+
+### Phase S2: Clarifying Questions
+
+Ask clarifying questions using AskUserQuestion. Focus on areas where the answer materially changes the ADR content.
+
+**Question areas:**
+1. **Problem Statement** — What is the specific problem or need?
+2. **Decision Drivers** — What forces influence this decision?
+3. **Considered Options** — What options exist? Push for at least 3.
+4. **Decision Outcome** — Has a decision been made?
+5. **Stakeholders** — Who are the decision-makers, consulted, and informed?
+6. **Consequences & Confirmation** — Expected outcomes, tradeoffs, verification?
+7. **Additional Context** — Related ADRs, team agreements, revisit timeline?
+
+### Phase S3: Research
+
+Dispatch two parallel Tasks:
+
+**Task 1 — Code Research:** Invoke `/architecture-docs:code-research` focused on existing patterns and current state.
+
+**Task 2 — Web Research:** Invoke `/architecture-docs:web-research` focused on best practices and known pitfalls.
+
+**CHECKPOINT — Present Research Findings:**
+Ask: "Does this align with what you know? Should I dig deeper?"
+
+### Phase S4: Compile Context File
+
+Assemble using the same template as Compiler Mode Phase 3, but without the D-XX numbering (decisions weren't formally captured).
+
+### Phase S5: Save and Return
+
+Same as Compiler Mode Phase 4.
