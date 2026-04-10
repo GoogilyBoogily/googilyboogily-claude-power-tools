@@ -336,6 +336,24 @@
         "scaffolding",
         "meta"
       ]
+    },
+    {
+      "name": "the-critic",
+      "description": "11 specialist code critics that run in parallel via an orchestrator, each finding everything wrong with code from a specific lens — approach, architecture, best practices, simplicity, testability, maintainability, security, performance, error handling, readability, and SOLID principles",
+      "version": "1.0.0",
+      "source": "./plugins/the-critic",
+      "category": "commands",
+      "keywords": [
+        "code-review",
+        "critic",
+        "architecture",
+        "security",
+        "performance",
+        "best-practices",
+        "solid",
+        "simplicity",
+        "quality"
+      ]
     }
   ]
 }
