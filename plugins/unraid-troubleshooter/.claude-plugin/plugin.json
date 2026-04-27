@@ -1,0 +1,8 @@
+{
+  "name": "unraid-troubleshooter",
+  "description": "Diagnose and fix Unraid (Lime Tech NAS OS) issues — array start/stop, parity, disabled disks, Docker macvlan/ipvlan, VM/GPU passthrough, BTRFS/ZFS pools, shares, plugins, Community Apps, boot/license, with version-aware release notes lookup",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}

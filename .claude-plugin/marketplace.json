@@ -377,6 +377,39 @@
         "kernel",
         "flatpak"
       ]
+    },
+    {
+      "name": "unraid-troubleshooter",
+      "description": "Diagnose and fix Unraid (Lime Technology NAS OS) issues — array start/stop hangs, parity, disabled disks (red ball), Docker macvlan/ipvlan call traces and custom networks, KVM/QEMU VMs and GPU/PCIe passthrough (IOMMU/VFIO/ACS), BTRFS scrub/balance and ZFS pool degraded/corruption, mover and share allocation, SMB/NFS permissions, Community Apps and plugin install/repair, USB boot and license/GUID, syslog and diagnostics-bundle interpretation, with version-aware release-notes lookup",
+      "version": "1.0.0",
+      "source": "./plugins/unraid-troubleshooter",
+      "category": "skills",
+      "keywords": [
+        "unraid",
+        "lime-technology",
+        "nas",
+        "troubleshooting",
+        "debugging",
+        "array",
+        "parity",
+        "macvlan",
+        "ipvlan",
+        "docker",
+        "kvm",
+        "vm",
+        "passthrough",
+        "iommu",
+        "vfio",
+        "btrfs",
+        "zfs",
+        "shares",
+        "smb",
+        "nfs",
+        "community-applications",
+        "plugins",
+        "boot-usb",
+        "license"
+      ]
     }
   ]
 }
