@@ -354,6 +354,29 @@
         "simplicity",
         "quality"
       ]
+    },
+    {
+      "name": "linux-troubleshooter",
+      "description": "Diagnose and fix Linux desktop issues — Nvidia/Mesa GPU drivers, Wayland/X11 display servers, PipeWire audio, systemd boot, suspend/hibernate, NetworkManager/Wi-Fi/DNS, kernel modules/DKMS, Flatpak/Snap/AppImage sandbox, and filesystem/package-manager recovery",
+      "version": "1.0.0",
+      "source": "./plugins/linux-troubleshooter",
+      "category": "skills",
+      "keywords": [
+        "linux",
+        "desktop",
+        "troubleshooting",
+        "debugging",
+        "nvidia",
+        "mesa",
+        "wayland",
+        "x11",
+        "pipewire",
+        "systemd",
+        "boot",
+        "suspend",
+        "kernel",
+        "flatpak"
+      ]
     }
   ]
 }

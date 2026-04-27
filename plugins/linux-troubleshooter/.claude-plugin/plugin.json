@@ -1,0 +1,8 @@
+{
+  "name": "linux-troubleshooter",
+  "description": "Diagnose and fix Linux desktop issues — Nvidia/Mesa GPU drivers, Wayland/X11 display, PipeWire audio, systemd, boot, suspend, networking, sandbox apps",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}
