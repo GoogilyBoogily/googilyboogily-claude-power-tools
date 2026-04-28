@@ -410,6 +410,29 @@
         "boot-usb",
         "license"
       ]
+    },
+    {
+      "name": "unraid",
+      "description": "Multi-server Unraid MCP — Docker, VMs, array, parity, live telemetry over GraphQL",
+      "version": "0.1.0",
+      "source": {
+        "source": "github",
+        "repo": "GoogilyBoogily/unraid-mcp",
+        "ref": "v0.1.0"
+      },
+      "category": "mcp",
+      "keywords": [
+        "unraid",
+        "mcp",
+        "homelab",
+        "graphql",
+        "typescript",
+        "docker",
+        "vm",
+        "array",
+        "parity",
+        "telemetry"
+      ]
     }
   ]
 }
