@@ -412,6 +412,33 @@
       ]
     },
     {
+      "name": "blender",
+      "description": "Interface with Blender through its Python API (bpy) — scene authoring, mesh editing, animation, materials, geometry nodes, headless rendering, addon authoring, and MCP integration",
+      "version": "1.0.0",
+      "source": "./plugins/blender",
+      "category": "skills",
+      "keywords": [
+        "blender",
+        "bpy",
+        "bmesh",
+        "3d",
+        "modeling",
+        "animation",
+        "rendering",
+        "cycles",
+        "eevee",
+        "geometry-nodes",
+        "shader-nodes",
+        "gltf",
+        "fbx",
+        "usd",
+        "addon",
+        "mcp",
+        "headless",
+        "python-api"
+      ]
+    },
+    {
       "name": "unraid",
       "description": "Multi-server Unraid MCP — Docker, VMs, array, parity, live telemetry over GraphQL",
       "version": "0.1.1",

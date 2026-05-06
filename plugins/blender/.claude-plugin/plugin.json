@@ -1,0 +1,8 @@
+{
+  "name": "blender",
+  "description": "Interface with Blender through the Python API (bpy) — scene authoring, mesh editing, animation, materials, geometry nodes, headless rendering, addon authoring, and MCP integration",
+  "version": "1.0.0",
+  "author": {
+    "name": "GoogilyBoogily"
+  }
+}
